@@ -1,0 +1,9 @@
+body{
+      --bg-color: #09090B;
+      /* --accent-color: to do; */
+      --txt-color: #FFFFFF;
+      background-color: var(--bg-color);
+      color: var(--txt-color);
+      font-family: "Raleway";
+      margin: auto;
+}
