@@ -1,9 +1,175 @@
 body{
+      --accent-color1: #431DDC;
+      --accent-color2: #C929D7;
       --bg-color: #09090B;
-      /* --accent-color: to do; */
+      --second-color: #1E1E1F;
       --txt-color: #FFFFFF;
       background-color: var(--bg-color);
       color: var(--txt-color);
-      font-family: "Raleway";
-      margin: auto;
+      font-family: 'Inter', sans-serif;
+}
+
+.firstname {
+      font-size: 35px;
+      font-weight: bold;
+      margin: 0;
+}
+
+.lastname {
+      font-size: 25px;
+      font-weight: lighter;
+      margin: 0;
+}
+
+.name {
+    margin-left: 10px;
+    position: absolute;
+}
+
+nav {
+    align-items: center;
+    display: flex;
+}
+
+nav ul {
+    display: flex;
+    justify-content: center;
+    list-style-type: none;
+    margin-left: 150px;
+    margin-right: auto;
+}
+
+nav ul li {
+    margin-right: 40px;
+    margin: 20px;
+}
+
+a {
+    color: var(--txt-color);
+    display: inline-block;
+    font-size: 25px;
+    position: relative;
+    text-decoration: none;
+}
+
+.link::after{
+    background-color: var(--txt-color);
+    bottom: 0;
+    content: '';
+    height: 2px;
+    left: 0;
+    position: absolute;
+    transform-origin: bottom right;
+    transform: scaleX(0);
+    transition: transform 0.25s ease-out;
+    width: 100%;
+}
+
+.link:hover::after {
+    transform-origin: bottom left;
+    transform: scaleX(1);
+}
+
+.btnRect {
+    background: 
+        linear-gradient(to right, var(--bg-color), var(--bg-color)) padding-box,
+        linear-gradient(to right, var(--accent-color1), var(--accent-color2)) border-box;
+    border-radius: 40px;
+    border: 3px solid transparent;
+    margin-right: 20px;
+    padding: 4px 12px;
+    transition: transform .2s;
+    width: fit-content;
+}
+
+.btnRect:hover {
+    transform: translateY(-4px);
+}
+
+.welcome {
+    font-size: 25px;
+    margin-bottom: 140px;
+    margin-top: 140px;
+    text-align: center;
+}
+
+.description {
+    font-size: 23px;
+    font-weight: lighter;
+    letter-spacing: 1px;
+}
+
+.more {
+    margin: auto;
+}
+
+.profil, .experience, .diplomes {
+    background-color: var(--second-color);
+    border-radius: 15px;
+    height: fit-content;
+    margin: auto;
+    max-width: 85%;
+    overflow: hidden;
+}
+
+.experience {
+    margin-bottom: 29px;   
+}
+
+.sectionTitle {
+    font-size: 40px;
+    margin-bottom: 20px;
+    margin-left: 30px;
+    position: absolute;
+}
+
+.profilDescription {
+    font-size: 23px;
+    font-weight: lighter;
+    margin-bottom: auto;
+    width: fit-content;
+    margin: 130px auto auto 100px;
+    max-width: 60%;
+    overflow: hidden;
+    position: absolute;
+    word-wrap: break-word;
+}
+
+.sectionDescription {
+    font-size: 23px;
+    font-weight: lighter;
+    margin-bottom: auto;
+    width: fit-content;
+    margin-left: 100px;
+    margin-top: 130px;
+    max-width: 60%;
+    margin-bottom: 30px;
+    overflow: hidden;
+    word-wrap: break-word;
+}
+
+.photo {
+    background-color: #D9D9D9;
+    border-radius: 15px;
+    display: inline;
+    float: right;
+    height: 250px;
+    margin: 50px 30px 30px 0;
+    width: 200px;
+}
+
+.content {
+    display: inline;
+}
+
+.section {
+    position: relative;
+    scale: 0.8;
+    transition: transform 0.5s ease, opacity 0.5s ease;
+    opacity: 0.5;
+}
+
+.section.scrollEffect {
+    transform: translateY(-40%) scale(1.2);
+    opacity: 1;
 }
