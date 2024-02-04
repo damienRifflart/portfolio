@@ -1,4 +1,4 @@
-body{
+*{
       --accent-color1: #431DDC;
       --accent-color2: #C929D7;
       --bg-color: #09090B;
@@ -7,6 +7,7 @@ body{
       background-color: var(--bg-color);
       color: var(--txt-color);
       font-family: 'Inter', sans-serif;
+      scroll-padding-top: 300px; 
 }
 
 .firstname {
@@ -71,9 +72,7 @@ a {
 }
 
 .btnRect {
-    background: 
-        linear-gradient(to right, var(--bg-color), var(--bg-color)) padding-box,
-        linear-gradient(to right, var(--accent-color1), var(--accent-color2)) border-box;
+    background:         linear-gradient(to right, var(--bg-color), var(--bg-color)) padding-box,        linear-gradient(to right, var(--accent-color1), var(--accent-color2)) border-box;
     border-radius: 40px;
     border: 3px solid transparent;
     margin-right: 20px;
@@ -103,13 +102,14 @@ a {
     margin: auto;
 }
 
-.profil, .experience, .diplomes {
+.profil, .experience, .formation {
     background-color: var(--second-color);
     border-radius: 15px;
     height: fit-content;
     margin: auto;
     max-width: 85%;
     overflow: hidden;
+    border: rgb(17, 17, 17) solid 2px;
 }
 
 .experience {
@@ -127,24 +127,25 @@ a {
     font-size: 23px;
     font-weight: lighter;
     margin-bottom: auto;
-    width: fit-content;
     margin: 130px auto auto 100px;
     max-width: 60%;
     overflow: hidden;
     position: absolute;
+    text-justify: inter-word;
+    width: fit-content;
     word-wrap: break-word;
 }
 
 .sectionDescription {
     font-size: 23px;
     font-weight: lighter;
-    margin-bottom: auto;
-    width: fit-content;
+    margin-bottom: 30px;
+    margin-bottom: 30px;
     margin-left: 100px;
     margin-top: 130px;
     max-width: 60%;
-    margin-bottom: 30px;
     overflow: hidden;
+    width: fit-content;
     word-wrap: break-word;
 }
 
@@ -153,9 +154,9 @@ a {
     border-radius: 15px;
     display: inline;
     float: right;
-    height: 250px;
+    height: 230px;
     margin: 50px 30px 30px 0;
-    width: 200px;
+    width: 220px;
 }
 
 .content {
@@ -163,13 +164,21 @@ a {
 }
 
 .section {
+    background:
+        linear-gradient(to right, var(--bg-color), var(--bg-color)) padding-box,
+        linear-gradient(to right, var(--accent-color1), var(--accent-color2)) border-box;
+    border-bottom: 3px solid transparent;
+    opacity: 0.5;
+    padding: 4px 12px;
     position: relative;
     scale: 0.8;
+    filter: blur(2px);
     transition: transform 0.5s ease, opacity 0.5s ease;
-    opacity: 0.5;
 }
 
 .section.scrollEffect {
-    transform: translateY(-40%) scale(1.2);
     opacity: 1;
+    filter: blur(0px);
+    transform: translateY(-40%) scale(1.2);
 }
+
