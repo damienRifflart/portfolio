@@ -5,10 +5,12 @@
       <meta name='viewport' content='width=device-width, initial-scale=1.0'>
       <title>Portfolio | Damien RIFFLART</title>
 
-      <!-- Files Link -->
+      <!-- Files & Jquery & FontAwesome Link -->
       <link rel='stylesheet' href='./style.css'>
       <script src='./main.js' defer></script>
-
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+      <script src="https://kit.fontawesome.com/9b827897fc.js" crossorigin="anonymous"></script>
+      
       <!-- Google Font Link -->
       <link rel="preconnect" href="https://fonts.googleapis.com">
       <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -22,39 +24,53 @@
             <h1 class="firstName">Damien</h1>
             <h1 class="lastName">RIFFLART</h1>
       </div>
-
+      
       <nav>
             <ul>
                   <li><a href="#profil" class="link">Profil</a></li>
                   <li><a href="#experience" class="link">Expérience</a></li>
                   <li><a href="#formation" class="link">Formation</a></li>
             </ul>
-            <div class="btnRect"><a href="#contact">Contact</a></div>
+            <button class="btnRect contactBtn" onclick="openPopup('#popup')"><a>Contact</a></button>
       </nav>
 
       <div class="welcome">
-            <h1>Bonjour!</h1>
+            <h1 class="staticTxt"><span id="animatedTxt"></span>👋</h1>
             <h3 class="description">Je suis étudiant au Lycée Louis Armand en seconde générale.</h3>
             <div class="btnRect more"><a href="#profil">En savoir +</a></div>
       </div>
 
       <section class="profil section" id="profil">
-            <h3 class="sectionTitle">Profil</h3>
+            <h3 class="sectionTitle">⚡ Profil</h3>
             <div class="content">
-                  <p class="profilDescription">Actuellement en seconde au lycée Louis Armand, je suis en section scientifique anglais. Passioné par les sciences, en particulier la Physique et les Mathématiques, je souhaite également en apprendre plus sur le domaine de l'informatique. Mon objectif étant de poursuivre mes études dans une filière qui me permettra de progresser dans la conception de logiciel informatique.</p>
-                  <img class="photo" src="/img/photo.jpg"></img>
+                  <p class="profilDescription">Actuellement en seconde au lycée Louis Armand, je suis en section scientifique anglais. Passioné par les sciences, en particulier la Physique et les Mathématiques, je souhaite également en apprendre plus sur le domaine de l'informatique. Mon objectif étant de poursuivre mes études dans une filière qui me permettra de progresser dans la conception de logiciels informatiques.</p>
+                  <img class="photo" src="/"></img>
             </div>
       </section>
 
       <section class="experience section" id="experience">
-            <h3 class="sectionTitle">Expérience Profesionnel</h3>
-            <p class="sectionDescription">Au cours de mon stage de troisième, j'ai eu l'occasion de travailler dans une pharmacie. Cette expérience m'a permis de comprendre le fonctionnement d'une officine, d'observer les discussion entre les pharmaciens et leurs clients, ainsi que les conseils délivrés</p>
+            <h3 class="sectionTitle">💼 Expérience Profesionnelle</h3>
+            <p class="sectionDescription">Au cours de mon stage de troisième, j'ai eu l'occasion de travailler dans une pharmacie. Cette expérience m'a permis de comprendre le fonctionnement d'une officine, d'observer les discussions entre les pharmaciens et leurs clients, ainsi que les conseils délivrés</p>
       </section>
 
       <section class="formation section" id="formation">
-            <h3 class="sectionTitle">Formation</h3>
-            <p class="sectionDescription">Mon parcours scolaire a démarré au Collège de Dannemarie pour se poursuivre en troisième au collège de Jean XXIII à Mulhouse. Après avoir eu mon brevet avec mention très bien et validé un niveau en anglais B2 au Cambridge, je suis désormais en seconde générale au Lycée Louis Armand, dans la section scientifique anglaise, SESA.</p>
+            <h3 class="sectionTitle">📋 Formation</h3>
+            <p class="sectionDescription">Mon parcours scolaire a démarré au Collège de Dannemarie pour se poursuivre en troisième au collège de Jean XXIII à Mulhouse. Après avoir eu mon brevet avec mention très bien et validé un niveau en anglais B2 du Cambridge, je suis désormais en seconde générale au Lycée Louis Armand, dans la section scientifique anglaise, SESA.</p>
       </section>
+
+      <div class="popup" id="popup">
+            <div class="wrapper">
+                  <i onclick="closePopup('#popup')" class="fa-solid fa-xmark"></i>
+                  <h2 class="popupTitle">Contactez-moi!</h2>
+                  <p class="popupText">Pour me contacter, veuillez envoyer un Email à l'adresse<a href="mailto:rifflartdamiencontact@gmail.com">rifflartdamiencontact@gmail.com</a></p>
+                  <p>Ou par téléphone: 07.54.39.66.80</p>
+            </div>
+      </div>
+
+      <footer>
+            <a rel="stylesheet" href=mailto:rifflartdamiencontact@gmail.com>🔗Contactez-moi! &nbsp &nbsp &nbsp</a>
+            <a rel="stylesheet" href="https://github.com/damienRifflart">🗃️Mes projets (github)</a>
+      </footer>
 
 </body>
 </html>
