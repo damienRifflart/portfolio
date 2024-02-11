@@ -22,21 +22,13 @@ window.addEventListener('scroll', () => {
     const sections = document.querySelectorAll('.section');
     sections.forEach((section) => {
         const rect = section.getBoundingClientRect();
-        if (rect.bottom < window.innerHeight && rect.bottom >= 0 && height > 480) {
+        if (rect.top < window.innerHeight && rect.top >= 0) {
             if (direction === 'down') {
                 section.classList.add('scrollEffect'); 
             } else {
                 section.classList.remove('scrollEffect');
             }
 
-        } else {
-            if (rect.top < window.innerHeight && rect.top >= 0 && height <= 540) {
-                if (direction === 'down') {
-                    section.classList.add('scrollEffect'); 
-                } else {
-                    section.classList.remove('scrollEffect');
-                } 
-            }
         }
     });
 });
