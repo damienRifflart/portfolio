@@ -35,7 +35,7 @@ window.addEventListener('scroll', () => {
 
 // Typing effect
 const dynamicText = document.getElementById('animatedTxt')
-const words = ["Bonjour !", "Hallo !", "Hello !", "Olà !"];
+const words = ["Bonjour !", "Hallo !", "Hello !", "Holla !"];
 let wordIndex = 0;
 let charIndex = 0;
 let isDeleting = false;
