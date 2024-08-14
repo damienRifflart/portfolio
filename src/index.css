@@ -1,3 +1,42 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 :root {
-  font-family: Inter;
+    --bg: #ffffff;
+    --accent: #DD7A6E;
+    --secondary: #E3AE75;
+    background: linear-gradient(to right, var(--bg), #ffe0dd 80%);
+}
+
+nav {
+    font-family: Sen, sans-serif;
+}
+
+nav li {
+    display: flex;
+    align-items: center;
+}
+
+.name {
+    text-justify: inter-word;
+}
+
+@media (max-width: 1300px) {
+    .tabs {
+        justify-content: start;
+    }
+}
+
+@media (max-width: 940px) {
+    .navbar {
+       margin-left: 10px;
+       margin-right: 10px; 
+    }
+}
+
+@media (max-width: 880px) {
+    .navbar {
+        display: none;
+    }
 }
