@@ -18,13 +18,23 @@ nav li {
     align-items: center;
 }
 
-.name {
+.presentation {
     text-justify: inter-word;
+}
+
+@media (max-width: 1455px) {
+    .presentation {
+        font-size: 2rem;
+    }
 }
 
 @media (max-width: 1300px) {
     .tabs {
         justify-content: start;
+    }
+
+    .blurBg {
+        width: 30rem;
     }
 }
 
@@ -33,10 +43,64 @@ nav li {
        margin-left: 10px;
        margin-right: 10px; 
     }
+
+    .blurBg {
+        display: none;
+    }
+
+    .accueil {
+        display: flex;
+        gap: 10rem;
+        flex-direction: column;
+    }
+
+    .hello {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .welcome {
+        color: black;
+        font-size: 3rem;
+    }
+
+    .presentationDiv {
+        width: 60%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .separator {
+        margin-top: 8rem;
+    }
 }
 
 @media (max-width: 880px) {
     .navbar {
         display: none;
+    }
+
+    .menu {
+        display: flex;
+        justify-content: center;
+        width: full;
+        margin-top: 1rem;
+    }
+
+    #profil {
+        margin-top: 20rem;
+    }
+
+    .profil {
+        font-size: 1.25rem;
+        line-height: 2rem;
+    }
+
+    .photo {
+        width: 35%;
+    }
+
+    .photoDesc {
+        font-size: 1.1rem;
     }
 }
