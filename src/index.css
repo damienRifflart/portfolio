@@ -73,6 +73,10 @@ nav li {
     .separator {
         margin-top: 8rem;
     }
+
+    #profil {
+        margin-top: 20rem;
+    }
 }
 
 @media (max-width: 880px) {
@@ -82,13 +86,9 @@ nav li {
 
     .menu {
         display: flex;
-        justify-content: center;
-        width: full;
+        margin-left: 1rem;
         margin-top: 1rem;
-    }
-
-    #profil {
-        margin-top: 20rem;
+        width: fit-content;
     }
 
     .profil {

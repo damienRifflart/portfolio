@@ -1,83 +1,59 @@
-import { FaArrowAltCircleDown } from "react-icons/fa";
+import { FaArrowAltCircleDown, FaLongArrowAltDown  } from "react-icons/fa";
 import { motion } from "framer-motion"
-import { Menu, X } from "lucide-react"
 import { useState } from "react";
-
+import { MenuButton } from "./components/MenuButton";
+import { NavBar } from "./components/NavBar";
+import { TextAnimation } from "./components/TextAnimation";
+import { LineItem } from "./components/LineItem";
 function App() {
-  const [isOpen, setIsOpen] = useState(false);
-
+  const [isNavOpen, setIsNavOpen] = useState(false);
 
   return (
     <>
-      <motion.div initial={{ opacity: 0, y: -50 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.4 }}>
-        <nav className="text-3xl mt-4 mr-10 navbar">
-          <ul className="flex flex-row justify-between items-center w-full">
-            <div className="flex justify-center w-full absolute gap-6 tabs">
-              <li className="mx-3"><a href="#accueil" className="hover:text-[var(--accent)] hover:text-4xl transition-all">Accueil</a></li>
-              <li className="mx-3"><a href="#profil" className="hover:text-[var(--accent)] hover:text-4xl transition-all">Profil</a></li>
-              <li className="mx-3"><a href="#experience" className="hover:text-[var(--accent)] hover:text-4xl transition-all">Expérience</a></li>
-              <li className="mx-3"><a href="#formation" className="hover:text-[var(--accent)] hover:text-4xl transition-all">Formation</a></li>
-            </div>
 
-            <li className="ml-auto bg-[#FFE53B] rounded-lg p-3 z-10 hover:-translate-y-0.5 transition-all hover:shadow-xl">
-              <a href="#contact">Contacter</a>
-            </li>
-          </ul>
-        </nav>
-      </motion.div>
+      <NavBar isNavOpen={isNavOpen} />
 
-      <button className="hidden menu ml-3">
-        {isOpen ? <X onClick={() => setIsOpen(false)}/> : <Menu onClick={() => setIsOpen(true)} />}
-      </button>
+      <div className="menu hidden">
+        <MenuButton isNavOpen={isNavOpen} setIsNavOpen={setIsNavOpen} />
+      </div>
 
-      <nav>
-          {isOpen && (
-            <ul className="flex flex-col justify-between items-center text-center">
-              <div className="flex flex-col justify-center absolute gap-2">
-                <li className="mx-3"><a href="#accueil" className="hover:font-bold transition-all text-xl">Accueil</a></li>
-                <li className="mx-3"><a href="#profil" className="hover:font-bold transition-all text-xl">Profil</a></li>
-                <li className="mx-3"><a href="#experience" className="hover:font-bold transition-all text-xl">Expérience</a></li>
-                <li className="mx-3"><a href="#formation" className="hover:font-bold transition-all text-xl">Formation</a></li>
-              </div>
-            </ul>
-          )}
-      </nav>
 
-      <div className="flex mt-[15rem] h-[40vh] relative flex-col" id="accueil">
+      <div className="flex mt-[15rem] h-[16rem] relative flex-col" id="accueil">
         <div className="flex inline accueil">
           <div className="w-2/5 h-1/2 ml-[15rem] mr-[15rem] flex items-center justify-center relative hello">
             <div className="bg-[var(--accent)] w-[40rem] h-[18rem] rounded-full blur-[80px] absolute blurBg"></div>
             <h1 className="text-white text-6xl absolute text-center welcome">Bienvenue👋</h1>
           </div>
 
-          <motion.div initial={{ opacity: 0, x: 600 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.5 }}>
-            <div className="w-4/5 h-1/2 flex items-center text-justify justify-center relative presentationDiv">
-              <h1 className="text-5xl presentation">Je suis
-                <span className="bg-clip-text text-transparent bg-gradient-to-r from-[var(--accent)] to-[var(--secondary)] font-bold"> Damien RIFFLART</span>
-                , étudiant en 1ère au lycée Louis Armand à Mulhouse.
-              </h1>
-            </div>
-          </motion.div>
+          <div className="overflow-hidden">
+            <motion.div initial={{ opacity: 0, x: 400 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: false }} transition={{ duration: 0.8 }}>
+              <div className="w-4/5 h-1/2 flex items-center text-justify justify-center relative presentationDiv">
+                <h1 className="text-5xl presentation">Je suis
+                  <span className="bg-clip-text text-transparent bg-gradient-to-r from-[var(--accent)] to-[var(--secondary)] font-bold"> Damien RIFFLART</span>
+                  , étudiant en 1ère au lycée Louis Armand à Mulhouse.
+                </h1>
+              </div>
+            </motion.div>
+          </div>
         </div>
 
         <div className="w-full inline-flex justify-center items-center gap-5 mt-[13rem] separator flex">
           <hr className="border-4 rounded-2xl w-1/3 border-gray-400" />
-          <motion.div initial={{ opacity: 0, y: -10 }} whileInView={{ opacity: 1, y: 20 }} viewport={{ once: true }} transition={{ duration: 0.5 }}>
+          <motion.div initial={{ opacity: 0, y: -10 }} whileInView={{ opacity: 1, y: 20 }} viewport={{ once: false }} transition={{ duration: 0.5 }}>
             <FaArrowAltCircleDown color="gray" size={40} className="mt-[-1rem]"/>
           </motion.div>
           <hr className="border-4 rounded-2xl w-1/3 border-gray-400" />
         </div>
       </div>
 
+
+
+
       <div className="mt-[14rem]" id="profil">
-        <div className="inline flex justify-center text-5xl font-bold gap-4">
-          <motion.div initial={{ opacity: 0, x: -200 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 1.5 }}>
-            <h1>Qui</h1>
-          </motion.div>
-          <motion.div initial={{ opacity: 0, x: 200 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 1.5 }}>
-            <h1 className="mt-5">suis-je?</h1>
-          </motion.div>
+        <div>
+          <TextAnimation firstWord={"Qui"} secondWord={"suis-je?"} />
         </div>
+
 
         <div className="flex flex-col items-center">
           <div className="flex justify-center mt-8">
@@ -87,7 +63,7 @@ function App() {
                 section anglais
               </span>
               .
-              Curieux par tout ce qui m’entoure, je consacre mon temps libre à la programmation, au Rubik's cube, aux sciences, et à bien d’autres activités (randonnées, lecture...).
+              Curieux par tout ce qui m’entoure, je consacre mon temps libre à la programmation, au Rubik's cube, aux sciences, et à bien d’autres activités (musique, lecture...).
               Désireux d'apprendre toujours plus dans tous les domaines, je sais &#32;
               <span className="inline bg-clip-text text-transparent bg-gradient-to-r from-[var(--accent)] to-[var(--secondary)] font-bold">
                 m’adapter &#32;
@@ -103,17 +79,37 @@ function App() {
           <div className="w-fit flex flex-row gap-20 justify-center mt-[6rem] w-screen">
             <div className="flex flex-col w-1/4 photo">
               <img src="/Rubiks.png" alt="Rubik's Cube" className="-rotate-1"/>
-              <p className="text-xl text-gray-600 mt-5 ml-2 photoDesc">Je cherche constamment à m’améliorer, que ce soit sur le Rubik’s cube ou en général.</p>
+              <p className="text-xl text-gray-600 mt-5 ml-2 photoDesc">J'ai toujours aimé battre mes propres records en essayant d'apprendre de nouvelles techniques.</p>
             </div>
 
             <div className="flex flex-col w-1/4 photo">
-              <img src="/Randonee.png" alt="Randonée" className="rotate-1"/>
-              <p className="text-xl text-gray-600 mt-2 photoDesc">Photo d’une randonnée pendant l’été 2023, dans les Alpes du Sud.</p>
+              <img src="/orgue.jpg" alt="Orgue" className="rotate-1 rounded-3xl"/>
+              <p className="text-xl text-gray-600 mt-2 photoDesc">J'ai débuté en musique avec le piano, mais je me suis rapidement tourné vers l'orgue. Aujourd'hui, j'aime joué des deux, avec une petite préférence pour l'orgue 😁.</p>
             </div>
           </div>
-
         </div>
       </div>
+
+
+
+      <div className="mt-[10rem]" id="formation">
+        <div>
+          <TextAnimation firstWord={"Ma"} secondWord={"formation"} />
+        </div>
+        
+        <div className="ml-[15%] mt-20 relative">
+          <div className="w-[20px] h-[calc(100%+5rem)] bg-[var(--secondary)] rounded-2xl absolute">
+            <FaLongArrowAltDown  size={90} color="var(--secondary)" className="absolute -bottom-3 left-1/2 transform -translate-x-1/2 z-10" />
+          </div>
+
+          <div className="flex flex-col gap-[7rem] relative">
+            <LineItem title={"Collège Jean-Monnet"} description={"De la 6ème à la 4ème, j’ai été scolarisé au collège de Dannemarie."}/>
+            <LineItem title={"Collège privé Jean XXIII"} description={"J’ai ensuite suivi ma formation en 3ème à Mulhouse."}/>
+            <LineItem title={"Lycée Louis Armand"} description={"Depuis, je suis scolarisé à Mulhouse en Section Européenne Scientifique Anglais (SESA) jusqu’à la terminale."}/>
+          </div>
+        </div>
+      </div>
+
     </>
   )
 }
