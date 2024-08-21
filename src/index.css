@@ -9,6 +9,8 @@
     background: linear-gradient(to right, var(--bg), #ffe0dd 80%);
 }
 
+html, body { margin: 0; }
+
 nav {
     font-family: Sen, sans-serif;
 }
@@ -35,6 +37,17 @@ nav li {
 
     .blurBg {
         width: 30rem;
+    }
+
+
+
+    .expTitle {
+        font-size: 1.7rem;
+    }
+
+    .expDesc {
+        font-size: 1.3rem;
+        line-height: 130%;
     }
 }
 
@@ -75,7 +88,7 @@ nav li {
     }
 
     #profil {
-        margin-top: 20rem;
+        margin-top: 10rem;
     }
 }
 
@@ -101,6 +114,33 @@ nav li {
     }
 
     .photoDesc {
+        font-size: 1.1rem;
+    }
+
+    .text-animation {
+        font-size: 2.4rem;
+    }
+
+    .expCard {
+        flex-direction: column;
+    }
+
+    .img {
+        height: 15rem;
+        width: 100%;
+    }
+
+    .expText {
+        max-width:100%;
+    }
+}
+
+@media (max-width: 500px) {
+    .lineTitle {
+        font-size: 1.5rem;
+    }
+
+    .lineDesc {
         font-size: 1.1rem;
     }
 }

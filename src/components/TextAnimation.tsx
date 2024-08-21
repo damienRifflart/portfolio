@@ -28,7 +28,7 @@ export function TextAnimation({firstWord, secondWord}: {firstWord: string, secon
   return (
     <motion.div
       ref={ref}
-      className="inline flex justify-center text-5xl font-bold gap-4"
+      className="inline flex justify-center text-5xl font-bold gap-4 text-animation overflow-hidden"
       variants={containerVariants}
       initial="hidden"
       animate={inView ? 'visible' : 'hidden'}

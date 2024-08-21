@@ -5,6 +5,9 @@ import { MenuButton } from "./components/MenuButton";
 import { NavBar } from "./components/NavBar";
 import { TextAnimation } from "./components/TextAnimation";
 import { LineItem } from "./components/LineItem";
+import { ExpCard } from "./components/expCard";
+
+
 function App() {
   const [isNavOpen, setIsNavOpen] = useState(false);
 
@@ -18,7 +21,7 @@ function App() {
       </div>
 
 
-      <div className="flex mt-[15rem] h-[16rem] relative flex-col" id="accueil">
+      <div className="flex mt-[15rem] h-fit relative flex-col" id="accueil">
         <div className="flex inline accueil">
           <div className="w-2/5 h-1/2 ml-[15rem] mr-[15rem] flex items-center justify-center relative hello">
             <div className="bg-[var(--accent)] w-[40rem] h-[18rem] rounded-full blur-[80px] absolute blurBg"></div>
@@ -26,7 +29,7 @@ function App() {
           </div>
 
           <div className="overflow-hidden">
-            <motion.div initial={{ opacity: 0, x: 400 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: false }} transition={{ duration: 0.8 }}>
+            <motion.div initial={{ opacity: 0, x: 300 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: false }} transition={{ duration: 0.8 }}>
               <div className="w-4/5 h-1/2 flex items-center text-justify justify-center relative presentationDiv">
                 <h1 className="text-5xl presentation">Je suis
                   <span className="bg-clip-text text-transparent bg-gradient-to-r from-[var(--accent)] to-[var(--secondary)] font-bold"> Damien RIFFLART</span>
@@ -48,12 +51,10 @@ function App() {
 
 
 
-
       <div className="mt-[14rem]" id="profil">
         <div>
           <TextAnimation firstWord={"Qui"} secondWord={"suis-je?"} />
         </div>
-
 
         <div className="flex flex-col items-center">
           <div className="flex justify-center mt-8">
@@ -107,6 +108,21 @@ function App() {
             <LineItem title={"Collège privé Jean XXIII"} description={"J’ai ensuite suivi ma formation en 3ème à Mulhouse."}/>
             <LineItem title={"Lycée Louis Armand"} description={"Depuis, je suis scolarisé à Mulhouse en Section Européenne Scientifique Anglais (SESA) jusqu’à la terminale."}/>
           </div>
+        </div>
+      </div>
+
+      <div className="mt-[15rem]" id="experience">
+        <div>
+          <TextAnimation firstWord={"Mon"} secondWord={"expérience"} />
+        </div>
+        
+        <div className="mt-10 mb-20 ml-10 w-3/4 flex flex-col">
+          <ExpCard 
+            title={'Pharmacie de Dannemarie'}
+            description={"Au cours de mon stage de troisième, j'ai eu l'occasion de travailler dans une pharmacie. Cela m'a permis de comprendre le fonctionnement d'une officine, d'observer les discussions entre les pharmaciens et leurs clients, ainsi que les conseils délivrés."}
+            img={"src/assets/pharmacie.jpg"}
+            url={"https://pharmaciedelaportedalsace.mesoigner.fr/"}
+          />
         </div>
       </div>
 
