@@ -4,143 +4,15 @@
 
 :root {
     --bg: #ffffff;
-    --accent: #DD7A6E;
-    --secondary: #E3AE75;
+    --accent: #f4978e;
+    --secondary: #fbc4ab;
     background: linear-gradient(to right, var(--bg), #ffe0dd 80%);
 }
-
-html, body { margin: 0; }
 
 nav {
     font-family: Sen, sans-serif;
 }
 
-nav li {
-    display: flex;
-    align-items: center;
-}
-
-.presentation {
-    text-justify: inter-word;
-}
-
-@media (max-width: 1455px) {
-    .presentation {
-        font-size: 2rem;
-    }
-}
-
-@media (max-width: 1300px) {
-    .tabs {
-        justify-content: start;
-    }
-
-    .blurBg {
-        width: 30rem;
-    }
-
-
-
-    .expTitle {
-        font-size: 1.7rem;
-    }
-
-    .expDesc {
-        font-size: 1.3rem;
-        line-height: 130%;
-    }
-}
-
-@media (max-width: 940px) {
-    .navbar {
-       margin-left: 10px;
-       margin-right: 10px; 
-    }
-
-    .blurBg {
-        display: none;
-    }
-
-    .accueil {
-        display: flex;
-        gap: 10rem;
-        flex-direction: column;
-    }
-
-    .hello {
-        margin-left: auto;
-        margin-right: auto;
-    }
-
-    .welcome {
-        color: black;
-        font-size: 3rem;
-    }
-
-    .presentationDiv {
-        width: 60%;
-        margin-left: auto;
-        margin-right: auto;
-    }
-
-    .separator {
-        margin-top: 8rem;
-    }
-
-    #profil {
-        margin-top: 10rem;
-    }
-}
-
-@media (max-width: 880px) {
-    .navbar {
-        display: none;
-    }
-
-    .menu {
-        display: flex;
-        margin-left: 1rem;
-        margin-top: 1rem;
-        width: fit-content;
-    }
-
-    .profil {
-        font-size: 1.25rem;
-        line-height: 2rem;
-    }
-
-    .photo {
-        width: 35%;
-    }
-
-    .photoDesc {
-        font-size: 1.1rem;
-    }
-
-    .text-animation {
-        font-size: 2.4rem;
-    }
-
-    .expCard {
-        flex-direction: column;
-    }
-
-    .img {
-        height: 15rem;
-        width: 100%;
-    }
-
-    .expText {
-        max-width:100%;
-    }
-}
-
-@media (max-width: 500px) {
-    .lineTitle {
-        font-size: 1.5rem;
-    }
-
-    .lineDesc {
-        font-size: 1.1rem;
-    }
+html {
+    scroll-behavior: smooth;
 }

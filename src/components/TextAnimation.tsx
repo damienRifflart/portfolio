@@ -15,13 +15,8 @@ export function TextAnimation({firstWord, secondWord}: {firstWord: string, secon
     visible: { opacity: 1, transition: { staggerChildren: 0.2 } }
   };
 
-  const leftVariants = {
+  const variant = {
     hidden: { x: isMobile ? '-50%' : '-100%' },
-    visible: { x: 0, transition: { duration: 0.8, ease: 'easeOut' } }
-  };
-
-  const rightVariants = {
-    hidden: { x: isMobile ? '50%' : '100%' },
     visible: { x: 0, transition: { duration: 0.8, ease: 'easeOut' } }
   };
 
@@ -33,8 +28,8 @@ export function TextAnimation({firstWord, secondWord}: {firstWord: string, secon
       initial="hidden"
       animate={inView ? 'visible' : 'hidden'}
     >
-      <motion.h1 variants={leftVariants}>{firstWord}</motion.h1>
-      <motion.h1 className="mt-5" variants={rightVariants}>{secondWord}</motion.h1>
+      <motion.h1 variants={variant}>{firstWord}</motion.h1>
+      <motion.h1 className="mt-7" variants={variant}>{secondWord}</motion.h1>
     </motion.div>
   );
 };
