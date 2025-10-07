@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>RIFFLART Damien</title>
+        <script src="https://cdn.tailwindcss.com"></script>
+        <style>
+        .glass-tag {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 
+                0 4px 16px rgba(0, 0, 0, 0.1),
+                inset 0 1px 0 rgba(255, 255, 255, 0.3);
+            transition: all 0.3s ease;
+        }
+        .active {
+            border: rgba(255, 255, 255, 0.5) solid 1px;
+        }
+        .skill-card {
+            background: rgba(255, 255, 255, 0.12);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.4s ease;
+        }
+        #menu.menu-open {
+            max-height: 400px;
+            opacity: 1;
+        }
+            
+        #menu.menu-closed {
+            max-height: 0;
+            opacity: 0;
+        }
+        </style>
+    </head>
+
+    <body class="bg-gradient-to-br from-blue-800 to-indigo-700 flex flex-col">
+        <nav class="relative z-10 bg-white/20 backdrop-blur-md border-b border-white/20">
+            <div class="max-w-6xl mx-auto px-4 my-auto">
+                <button id="menu-toggle" class="sm:hidden flex items-center px-3 mt-3 rounded text-white hover:bg-white/30 transition-all duration-300" aria-label="Ouvrir le menu">
+                    <svg class="h-7 w-7 transition-transform duration-300" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/>
+                    </svg>
+                </button>
+                <div id="menu" class="flex-col mt-2 mb-2 sm:flex-row justify-center items-center space-y-1 sm:space-y-0 sm:space-x-8 pb-4 sm:pb-0 sm:flex overflow-hidden transition-all duration-500 ease-in-out transform origin-top max-h-0 opacity-0 sm:max-h-none sm:opacity-100 sm:!flex">
+                    <a href="https://rifflartdamien.me" class="w-full sm:w-auto text-center px-6 py-3 text-white font-medium rounded-lg transition-all duration-300 hover:bg-white/30 bg-white/20 active flex items-center justify-center transform hover:scale-105 hover:shadow-lg">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-home inline mr-2 transition-transform duration-300 hover:rotate-12"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9,22 9,12 15,12 15,22"/></svg>
+                        Accueil
+                    </a>
+                    <a href="https://rifflartdamien.me/projets" class="w-full sm:w-auto text-center px-6 py-3 text-white font-medium rounded-lg transition-all duration-300 bg-white/20 hover:bg-white/30 flex items-center justify-center transform hover:scale-105 hover:shadow-lg">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-atom inline mr-2 transition-transform duration-300 hover:rotate-180"><circle cx="12" cy="12" r="1"/><path d="M20.2 20.2c2.04-2.03.02-7.36-4.5-11.9-4.54-4.52-9.87-6.54-11.9-4.5-2.04 2.03-.02 7.36 4.5 11.9 4.54 4.52 9.87 6.54 11.9 4.5Z"/><path d="M15.7 15.7c4.52-4.54 6.54-9.87 4.5-11.9-2.03-2.04-7.36-.02-11.9 4.5-4.52 4.54-6.54 9.87-4.5 11.9 2.03 2.04 7.36.02 11.9-4.5Z"/></svg>
+                        Projets
+                    </a>
+                    <a href="https://rifflartdamien.me/contact" class="w-full sm:w-auto text-center px-6 py-3 text-white font-medium rounded-lg transition-all duration-300 bg-white/20 hover:bg-white/30 flex items-center justify-center transform hover:scale-105 hover:shadow-lg">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-mail inline mr-2 transition-transform duration-300 hover:scale-110"><path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7"/><rect x="2" y="4" width="20" height="16" rx="2"/></svg>
+                        Contact
+                    </a>
+                </div>
+            </div>
+        </nav>
+
+        <div class="py-20 px-4 relative overflow-hidden min-h-screen">
+            <div class="absolute inset-0 bg-white/10 backdrop-blur-2xl -z-10"></div>
+
+            <div class="relative max-w-6xl mx-auto mb-[8rem]">
+                <div class="bg-white/10 backdrop-blur-md rounded-3xl p-12 border border-white border-opacity-20 shadow-2xl text-center text-white">
+                    <div class="w-24 h-24 bg-white/20 backdrop-blur-sm rounded-3xl flex items-center justify-center mx-auto mb-8 shadow-lg">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="45" height="45" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-user-icon lucide-user"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                    </div>
+                    <h1 class="text-5xl md:text-6xl font-bold mb-6 text-white drop-shadow-lg">
+                        Bienvenue
+                    </h1>
+                    <p class="text-xl md:text-2xl font-light max-w-4xl mx-auto text-white/80 leading-relaxed">
+                        Je suis étudiant en terminal, au Lycée Louis Armand à Mulhouse.
+                    </p>
+                </div>
+            </div>
+
+            <section class="py-2 px-2 sm:px-4 relative">
+                <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-white drop-shadow-lg text-center">Profil</h1>
+                <div class="max-w-6xl mx-auto">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center">
+                        <div class="skill-card rounded-2xl p-4 sm:p-6 md:p-8 text-white flex flex-col items-center justify-center h-full text-base sm:text-lg transition duration-300 hover:bg-white/20 hover:-translate-y-1 hover:scale-105">
+                            <h2 class="text-2xl sm:text-3xl font-bold mb-4 sm:mb-6 flex items-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-user-check mr-2 sm:mr-3"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><polyline points="16,11 18,13 22,9"/></svg>
+                                A propos
+                            </h2>
+                            <p class="text-white/80 leading-relaxed mb-4 sm:mb-6 text-justify">
+                                Actuellement en classe de terminale, je suis sérieux et motivé. Ma passion pour la physique, les mathématiques et l’informatique m’a naturellement conduit à choisir les spécialités Mathématiques et Physique.
+                            </p>
+                        </div>
+                        
+                        <div class="skill-card rounded-2xl p-4 sm:p-6 md:p-8 text-white flex flex-col items-center justify-center h-full text-base sm:text-lg transition duration-300 hover:bg-white/20 hover:-translate-y-1 hover:scale-105">
+                            <h2 class="text-2xl sm:text-3xl font-bold mb-4 sm:mb-6 flex items-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-target mr-2 sm:mr-3"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
+                                Activités
+                            </h2>
+                            <div class="space-y-3 sm:space-y-4">
+                                <div class="flex items-start space-x-2 sm:space-x-3">
+                                    <div class="w-2 h-2 bg-white/60 rounded-full mt-2 flex-shrink-0"></div>
+                                    <p class="text-white/80 text-justify">Je fais également de la musique depuis 2018. Ayant commencé par le piano, j'ai ensuite appris l'orgue pour enfin me tourner vers le violon, que j'ai commencé en première.</p>
+                                </div>
+                                <div class="flex items-start space-x-2 sm:space-x-3">
+                                    <div class="w-2 h-2 bg-white/60 rounded-full mt-2 flex-shrink-0"></div>
+                                    <p class="text-white/80 text-justify">J'adore jouer au badminton. Par le passé, j'ai également pratiqué du football et du tennis de table.
+</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <footer class="bg-[#061133] text-white py-8 w-full">
+            <div class="max-w-6xl mx-auto px-4 text-center">
+                <p class="text-md">© 2025 Damien RIFFLART. Tous droits réservés.</p>
+            </div>
+        </footer>
+    </body>
+    <script>
+        const btn = document.getElementById('menu-toggle');
+        const menu = document.getElementById('menu');
+        const svg = btn.querySelector('svg');
+                
+        btn.addEventListener('click', () => {
+        const isHidden = menu.classList.contains('menu-closed');
+                
+        if (isHidden) {
+            // Show menu
+            menu.classList.remove('menu-closed');
+            menu.classList.add('menu-open');
+        } else {
+            // Hide menu
+            menu.classList.remove('menu-open');
+            menu.classList.add('menu-closed');
+        }
+        });
+                
+        // Initialize menu as closed on mobile
+        if (window.innerWidth < 640) {
+            menu.classList.add('menu-closed');
+        }
+    </script>
+</html>

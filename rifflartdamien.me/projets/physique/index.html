@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projets Physique</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        body { font-family: 'Inter', sans-serif; }
+        .glass-tag {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 
+                0 4px 16px rgba(0, 0, 0, 0.1),
+                inset 0 1px 0 rgba(255, 255, 255, 0.3);
+            transition: all 0.3s ease;
+        }
+        .active {
+            border: rgba(255, 255, 255, 0.5) solid 1px;
+        }
+        #menu.menu-open {
+            max-height: 400px;
+            opacity: 1;
+        }
+            
+        #menu.menu-closed {
+            max-height: 0;
+            opacity: 0;
+        }
+    </style>
+</head>
+
+<body class="min-h-screen">
+    <div class="bg-gradient-to-br from-blue-800 to-indigo-700 flex flex-col">
+        <nav class="relative z-10 bg-white/20 backdrop-blur-md border-b border-white/20">
+            <div class="max-w-6xl mx-auto px-4 my-auto">
+                <button id="menu-toggle" class="sm:hidden flex items-center px-3 mt-3 rounded text-white hover:bg-white/30 transition-all duration-300" aria-label="Ouvrir le menu">
+                    <svg class="h-7 w-7 transition-transform duration-300" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/>
+                    </svg>
+                </button>
+                <div id="menu" class="flex-col mt-2 mb-2 sm:flex-row justify-center items-center space-y-1 sm:space-y-0 sm:space-x-8 pb-4 sm:pb-0 sm:flex overflow-hidden transition-all duration-500 ease-in-out transform origin-top max-h-0 opacity-0 sm:max-h-none sm:opacity-100 sm:!flex">
+                    <a href="https://rifflartdamien.me" class="w-full sm:w-auto text-center px-6 py-3 text-white font-medium rounded-lg transition-all duration-300 hover:bg-white/30 bg-white/20 flex items-center justify-center transform hover:scale-105 hover:shadow-lg">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-home inline mr-2 transition-transform duration-300 hover:rotate-12"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9,22 9,12 15,12 15,22"/></svg>
+                        Accueil
+                    </a>
+                    <a href="https://rifflartdamien.me/projets" class="w-full sm:w-auto text-center px-6 py-3 text-white active font-medium rounded-lg transition-all duration-300 bg-white/20 hover:bg-white/30 flex items-center justify-center transform hover:scale-105 hover:shadow-lg">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-atom inline mr-2 transition-transform duration-300 hover:rotate-180"><circle cx="12" cy="12" r="1"/><path d="M20.2 20.2c2.04-2.03.02-7.36-4.5-11.9-4.54-4.52-9.87-6.54-11.9-4.5-2.04 2.03-.02 7.36 4.5 11.9 4.54 4.52 9.87 6.54 11.9 4.5Z"/><path d="M15.7 15.7c4.52-4.54 6.54-9.87 4.5-11.9-2.03-2.04-7.36-.02-11.9 4.5-4.52 4.54-6.54 9.87-4.5 11.9 2.03 2.04 7.36.02 11.9-4.5Z"/></svg>
+                        Projets
+                    </a>
+                    <a href="https://rifflartdamien.me/contact" class="w-full sm:w-auto text-center px-6 py-3 text-white font-medium rounded-lg transition-all duration-300 bg-white/20 hover:bg-white/30 flex items-center justify-center transform hover:scale-105 hover:shadow-lg">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-mail inline mr-2 transition-transform duration-300 hover:scale-110"><path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7"/><rect x="2" y="4" width="20" height="16" rx="2"/></svg>
+                        Contact
+                    </a>
+                </div>
+            </div>
+        </nav>
+
+        <header class="py-10 px-4 relative overflow-hidden">
+            <div class="absolute inset-0 backdrop-blur-2xl bg-white/10"></div>
+
+            <div class="max-w-6xl mx-auto">
+                <div class="bg-white/10 backdrop-blur-md rounded-3xl p-12 border border-white border-opacity-20 shadow-2xl text-center text-white">
+                    
+                    <div class="flex flex-row gap-2 absolute left-3 right-3 top-3 justify-between">
+                        <a href="https://rifflartdamien.me/projets" class="bg-white/10 hover:bg-white/20 transition duration-400 backdrop-blur-md w-12 h-12 rounded-2xl flex items-center justify-center border border-white border-opacity-20">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-left-icon lucide-arrow-left"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></svg>
+                        </a>
+                    </div>
+                    
+                    <h1 class="text-4xl md:text-6xl font-bold mb-6 text-white drop-shadow-lg">
+                        Projets de Physique
+                    </h1>
+                    <p class="text-base w-2xl md:text-2xl font-light max-w-4xl mx-auto text-white/80 leading-relaxed">
+                        Passionné par la physique depuis le collège, j'explore les différents concepts théoriques en résolvant des problèmes inventés personnellement. Leur résolution, souvent réalisée avec un ami, donne lieu à un document rédigé en <span style="font-family: 'Computer Modern', serif; font-size: 1em;">L<span style="font-style: italic;">aTe</span>X</span>.
+                    </p>
+                    <div class="flex flex-nowrap justify-center gap-4 mt-8 w-full">
+                        <span class="hover:-translate-y-0.5 transition hover:bg-white/20 duration-400 glass-tag inline-flex items-center text-white rounded-full px-4 py-2 text-sm font-medium">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 mr-2" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H19a1 1 0 0 1 1 1v18a1 1 0 0 1-1 1H6.5a1 1 0 0 1 0-5H20"/></svg>
+                            6 Projets
+                        </span>
+                        <span class="hover:-translate-y-0.5 transition-transform hover:bg-white/20 duration-400 glass-tag inline-flex items-center text-white rounded-full px-4 py-2 text-sm font-medium">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-telescope-icon lucide-telescope w-6 h-6"><path d="m10.065 12.493-6.18 1.318a.934.934 0 0 1-1.108-.702l-.537-2.15a1.07 1.07 0 0 1 .691-1.265l13.504-4.44"/><path d="m13.56 11.747 4.332-.924"/><path d="m16 21-3.105-6.21"/><path d="M16.485 5.94a2 2 0 0 1 1.455-2.425l1.09-.272a1 1 0 0 1 1.212.727l1.515 6.06a1 1 0 0 1-.727 1.213l-1.09.272a2 2 0 0 1-2.425-1.455z"/><path d="m6.158 8.633 1.114 4.456"/><path d="m8 21 3.105-6.21"/><circle cx="12" cy="13" r="2"/></svg>
+                            &nbsp; Mécanique Classique - Quantique
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </header>
+    </div>
+
+    <main class="mx-auto max-w-6xl px-4 py-16">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Projet 6 -->
+            <div class="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-shadow duration-300 border border-gray-100 overflow-hidden flex flex-col h-[400px]">
+                <div class="p-8 flex flex-col flex-grow">
+                    <div class="w-16 h-16 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-2xl flex items-center justify-center mb-6">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-orbit-icon lucide-orbit"><path d="M20.341 6.484A10 10 0 0 1 10.266 21.85"/><path d="M3.659 17.516A10 10 0 0 1 13.74 2.152"/><circle cx="12" cy="12" r="3"/><circle cx="19" cy="5" r="2"/><circle cx="5" cy="19" r="2"/></svg>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-800 mb-4">Muon cosmique</h3>
+                    <p class="text-gray-600 text-justify flex-grow">
+                        Etude de la trajectoire d'un muon cosmique soumis à un champ magnétique uniforme, en mécanique classique et quantique.
+                    </p>
+                </div>
+
+                <div class="p-8 pt-0 mt-auto">
+                    <div class="flex flex-wrap gap-2 mb-5">
+                        <div class="inline-flex items-center bg-blue-500 text-white border border-blue-700 rounded-md w-[6rem] px-2.5 py-1 text-sm">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 mr-1.5 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m14.5 7-5 5"/><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H19a1 1 0 0 1 1 1v18a1 1 0 0 1-1 1H6.5a1 1 0 0 1 0-5H20"/><path d="m9.5 7 5 5"/></svg>
+                            A venir
+                        </div>
+
+                        <div class="inline-flex items-center bg-blue-500 text-white border border-blue-700 rounded-md px-2.5 py-1 text-sm">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 mr-1.5 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 4v16"/><path d="M6 12h6"/><path d="M12 4v16"/></svg>
+                            Hamiltonien
+                        </div>
+                    </div>
+
+                    <a href="muonCosmique.html" class="inline-flex items-center text-blue-500 font-semibold hover:text-blue-800 transition-colors">
+                        Découvrir le projet
+                        <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Projet 5 -->
+            <div class="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-shadow duration-300 border border-gray-100 overflow-hidden flex flex-col h-[400px]">
+                <div class="p-8 flex flex-col flex-grow">
+                    <div class="w-16 h-16 bg-gradient-to-br from-yellow-500 to-orange-600 rounded-2xl flex items-center justify-center mb-6">
+                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"></path></svg>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-800 mb-4">Lancer Vertical</h3>
+                    <p class="text-gray-600 text-justify flex-grow">
+                        Hauteur maximale atteinte lors d'un lancer vertical, en considérant la gravité et les frottements de l'air.
+                    </p>
+                </div>
+
+                <div class="p-8 pt-0 mt-auto">
+                    <div class="flex flex-wrap gap-2 mb-5">
+                        <div class="inline-flex items-center bg-orange-600 text-white border border-orange-800 rounded-md w-[5rem] px-2.5 py-1 text-sm">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 mr-1.5 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-book-check-icon lucide-book-check"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H19a1 1 0 0 1 1 1v18a1 1 0 0 1-1 1H6.5a1 1 0 0 1 0-5H20"/><path d="m9 9.5 2 2 4-4"/></svg>
+                            Fini
+                        </div>
+
+                        <div class="inline-flex items-center bg-orange-600 text-white border border-orange-800 rounded-md px-2.5 py-1 text-sm">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 mr-1.5 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 20V4L16 20V4" /></svg>
+                            Newton
+                        </div>
+                    </div>
+
+                    <a href="LancerVertical.pdf" target="_blank" class="inline-flex items-center text-orange-600 font-semibold hover:text-orange-800 transition-colors">
+                        Découvrir le projet
+                        <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Projet 4 -->
+            <div class="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-shadow duration-300 border border-gray-100 overflow-hidden flex flex-col h-[400px]">
+                <div class="p-8 flex flex-col flex-grow">
+                    <div class="w-16 h-16 bg-gradient-to-br from-green-500 to-teal-600 rounded-2xl flex items-center justify-center mb-6">
+                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16V4m0 0L3 8m4-4l4 4m6 0v12m0 0l4-4m-4 4l-4-4"></path></svg>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-800 mb-4">Oscillateur Harmonique</h3>
+                    <p class="text-gray-600 text-justify flex-grow">
+                        Résolution de l'équation différentielle de l'oscillateur harmonique à l'aide du lagrangien.
+                    </p>
+                </div>
+
+                <div class="p-8 pt-0 mt-auto">
+                    <div class="flex flex-wrap gap-2 mb-5">
+                        <div class="inline-flex items-center bg-teal-600 text-white border border-teal-800 rounded-md w-[5rem] px-2.5 py-1 text-sm">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 mr-1.5 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-book-check-icon lucide-book-check"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H19a1 1 0 0 1 1 1v18a1 1 0 0 1-1 1H6.5a1 1 0 0 1 0-5H20"/><path d="m9 9.5 2 2 4-4"/></svg>
+                            Fini
+                        </div>
+
+                        <div class="inline-flex items-center bg-teal-600 text-white border border-teal-800 rounded-md px-2.5 py-1 text-sm">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 mr-1.5 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M8 20V4L16 20V4" />
+                            </svg>
+                            Newton
+                        </div>
+                    </div>
+
+                    <a href="OscillateurHarmonique.pdf" target="_blank" class="inline-flex items-center text-teal-600 font-semibold hover:text-teal-900 transition-colors">
+                        Découvrir le projet
+                        <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Projet 3 -->
+            <div class="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-shadow duration-300 border border-gray-100 overflow-hidden flex flex-col h-[400px]">
+                <div class="p-8 flex flex-col flex-grow">
+                    <div class="w-16 h-16 bg-gradient-to-br from-indigo-600 to-blue-700 rounded-2xl flex items-center justify-center mb-6">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-volleyball-icon lucide-volleyball"><path d="M11.1 7.1a16.55 16.55 0 0 1 10.9 4"/><path d="M12 12a12.6 12.6 0 0 1-8.7 5"/><path d="M16.8 13.6a16.55 16.55 0 0 1-9 7.5"/><path d="M20.7 17a12.8 12.8 0 0 0-8.7-5 13.3 13.3 0 0 1 0-10"/><path d="M6.3 3.8a16.55 16.55 0 0 0 1.9 11.5"/><circle cx="12" cy="12" r="10"/></svg>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-800 mb-4">Rebonds d'un Objet</h3>
+                    <p class="text-gray-600 text-justify flex-grow">
+                        Approximation du nombre de rebond d'un objet qui tombe, avec perte d'énergie à chaque impact.
+                    </p>
+                </div>
+   
+                <div class="p-8 pt-0 mt-auto">
+                    <div class="flex flex-wrap gap-2 mb-5">
+                        <div class="inline-flex items-center bg-indigo-600 text-white border border-indigo-800 rounded-md w-[5rem] px-2.5 py-1 text-sm">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 mr-1.5 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-book-check-icon lucide-book-check"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H19a1 1 0 0 1 1 1v18a1 1 0 0 1-1 1H6.5a1 1 0 0 1 0-5H20"/><path d="m9 9.5 2 2 4-4"/></svg>
+                            Fini
+                        </div>
+
+                        <div class="inline-flex items-center bg-indigo-600 text-white border border-indigo-800 rounded-md px-2.5 py-1 text-sm">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 mr-1.5 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M8 4v12a2 2 0 0 0 2 2h6"/>
+                            </svg>
+                            Lagrangien
+                        </div>
+                    </div>
+
+                    <a href="NombreRebonds.pdf" target="_blank" class="inline-flex items-center text-indigo-600 font-semibold hover:text-indigo-900 transition-colors">
+                        Découvrir le projet
+                        <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Projet 2 -->
+            <div class="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-shadow duration-300 border border-gray-100 overflow-hidden flex flex-col h-[400px]">
+                <div class="p-8 flex flex-col flex-grow">
+                    <div class="w-16 h-16 bg-gradient-to-br from-pink-500 to-yellow-500 rounded-2xl flex items-center justify-center mb-6">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-volleyball-icon lucide-volleyball"><path d="M11.1 7.1a16.55 16.55 0 0 1 10.9 4"/><path d="M12 12a12.6 12.6 0 0 1-8.7 5"/><path d="M16.8 13.6a16.55 16.55 0 0 1-9 7.5"/><path d="M20.7 17a12.8 12.8 0 0 0-8.7-5 13.3 13.3 0 0 1 0-10"/><path d="M6.3 3.8a16.55 16.55 0 0 0 1.9 11.5"/><circle cx="12" cy="12" r="10"/></svg>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-800 mb-4">Angle de Lancer</h3>
+                    <p class="text-gray-600 text-justify flex-grow">
+                        Calcul de l'angle qui maximise la portée d'un projectile lancé.
+                    </p>
+                </div>
+                   
+                <div class="p-8 pt-0 mt-auto">
+                    <div class="flex flex-wrap gap-2 mb-5">
+                        <div class="inline-flex items-center bg-pink-600 text-white border border-pink-800 rounded-md w-[5rem] px-2.5 py-1 text-sm">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 mr-1.5 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-book-check-icon lucide-book-check"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H19a1 1 0 0 1 1 1v18a1 1 0 0 1-1 1H6.5a1 1 0 0 1 0-5H20"/><path d="m9 9.5 2 2 4-4"/></svg>
+                            Fini
+                        </div>
+
+                        <div class="inline-flex items-center bg-pink-600 text-white border border-pink-800 rounded-md px-2.5 py-1 text-sm">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 mr-1.5 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M8 20V4L16 20V4" />
+                            </svg>
+                            Newton
+                        </div>
+                    </div>
+
+                    <a href="AngleOptimal.pdf" target="_blank" class="inline-flex items-center text-pink-500 font-semibold hover:text-pink-700 transition-colors">
+                        Découvrir le projet
+                        <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Projet 1 -->
+            <div class="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-shadow duration-300 border border-gray-100 overflow-hidden flex flex-col h-[400px]">
+                <div class="p-8 flex flex-col flex-grow">
+                    <div class="w-16 h-16 bg-gradient-to-br from-red-400 to-red-700 rounded-2xl flex items-center justify-center mb-6">
+                        <svg width="65" height="65" viewBox="0 0 100 140" xmlns="http://www.w3.org/2000/svg">
+                            <line x1="35" y1="35" x2="60" y2="95" stroke="#fff" stroke-width="4" />
+                            <circle cx="61" cy="100" r="10" fill="#fff" stroke-width="3"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-800 mb-4">Pendule simple</h3>
+                    <p class="text-gray-600 text-justify flex-grow">
+                        Etude d'un pendule simple et dérivation des équations du mouvement.
+                    </p>
+                </div>
+
+                <div class="p-8 pt-0 mt-auto">
+                    <div class="flex flex-wrap gap-2 mb-5">
+                        <div class="inline-flex items-center bg-red-600 text-white border border-red-800 rounded-md w-[5rem] px-2.5 py-1 text-sm">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 mr-1.5 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-book-check-icon lucide-book-check"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H19a1 1 0 0 1 1 1v18a1 1 0 0 1-1 1H6.5a1 1 0 0 1 0-5H20"/><path d="m9 9.5 2 2 4-4"/></svg>
+                            Fini
+                        </div>
+
+                        <div class="inline-flex items-center bg-red-600 text-white border border-red-800 rounded-md px-2.5 py-1 text-sm">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 mr-1.5 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M8 4v12a2 2 0 0 0 2 2h6"/>
+                            </svg>
+                            Lagrangien
+                        </div>
+                    </div>
+
+                    <a href="PenduleSimple.pdf" target="_blank" class="inline-flex items-center text-red-600 font-semibold hover:text-red-800 transition-colors">
+                        Découvrir le projet
+                        <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-[#061133] text-white py-8">
+        <div class="max-w-6xl mx-auto px-4 text-center">
+            <p class="text-md">© 2025 Damien RIFFLART. Tous droits réservés.</p>
+        </div>
+    </footer>
+
+    <script>
+        const cards = document.querySelectorAll('.card-hover');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry, index) => {
+                if (entry.isIntersecting) {
+                    setTimeout(() => {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }, index * 150);
+                }
+            });
+        });
+
+        cards.forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(30px)';
+            card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(card);
+        });
+
+        const btn = document.getElementById('menu-toggle');
+        const menu = document.getElementById('menu');
+        const svg = btn.querySelector('svg');
+                
+        btn.addEventListener('click', () => {
+        const isHidden = menu.classList.contains('menu-closed');
+                
+        if (isHidden) {
+            // Show menu
+            menu.classList.remove('menu-closed');
+            menu.classList.add('menu-open');
+        } else {
+            // Hide menu
+            menu.classList.remove('menu-open');
+            menu.classList.add('menu-closed');
+        }
+        });
+                
+        // Initialize menu as closed on mobile
+        if (window.innerWidth < 640) {
+            menu.classList.add('menu-closed');
+        }
+    </script>
+</body>
+</html>

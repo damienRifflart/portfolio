@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projets Informatique</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        body { font-family: 'Inter', sans-serif; }
+        .glass-tag {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 
+                0 4px 16px rgba(0, 0, 0, 0.1),
+                inset 0 1px 0 rgba(255, 255, 255, 0.3);
+            transition: all 0.3s ease;
+        }
+        .active {
+            border: rgba(255, 255, 255, 0.5) solid 1px;
+        }
+        #menu.menu-open {
+            max-height: 400px;
+            opacity: 1;
+        }
+            
+        #menu.menu-closed {
+            max-height: 0;
+            opacity: 0;
+        }
+    </style>
+</head>
+
+<body class="min-h-screen">
+    <div class="bg-gradient-to-br from-blue-800 to-indigo-700 flex flex-col">
+        <nav class="relative z-10 bg-white/20 backdrop-blur-md border-b border-white/20">
+            <div class="max-w-6xl mx-auto px-4 my-auto">
+                <button id="menu-toggle" class="sm:hidden flex items-center px-3 mt-3 rounded text-white hover:bg-white/30 transition-all duration-300" aria-label="Ouvrir le menu">
+                    <svg class="h-7 w-7 transition-transform duration-300" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/>
+                    </svg>
+                </button>
+                <div id="menu" class="flex-col mt-2 mb-2 sm:flex-row justify-center items-center space-y-1 sm:space-y-0 sm:space-x-8 pb-4 sm:pb-0 sm:flex overflow-hidden transition-all duration-500 ease-in-out transform origin-top max-h-0 opacity-0 sm:max-h-none sm:opacity-100 sm:!flex">
+                    <a href="https://rifflartdamien.me" class="w-full sm:w-auto text-center px-6 py-3 text-white font-medium rounded-lg transition-all duration-300 hover:bg-white/30 bg-white/20 flex items-center justify-center transform hover:scale-105 hover:shadow-lg">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-home inline mr-2 transition-transform duration-300 hover:rotate-12"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9,22 9,12 15,12 15,22"/></svg>
+                        Accueil
+                    </a>
+                    <a href="https://rifflartdamien.me/projets" class="w-full sm:w-auto text-center px-6 py-3 text-white active font-medium rounded-lg transition-all duration-300 bg-white/20 hover:bg-white/30 flex items-center justify-center transform hover:scale-105 hover:shadow-lg">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-atom inline mr-2 transition-transform duration-300 hover:rotate-180"><circle cx="12" cy="12" r="1"/><path d="M20.2 20.2c2.04-2.03.02-7.36-4.5-11.9-4.54-4.52-9.87-6.54-11.9-4.5-2.04 2.03-.02 7.36 4.5 11.9 4.54 4.52 9.87 6.54 11.9 4.5Z"/><path d="M15.7 15.7c4.52-4.54 6.54-9.87 4.5-11.9-2.03-2.04-7.36-.02-11.9 4.5-4.52 4.54-6.54 9.87-4.5 11.9 2.03 2.04 7.36.02 11.9-4.5Z"/></svg>
+                        Projets
+                    </a>
+                    <a href="https://rifflartdamien.me/contact" class="w-full sm:w-auto text-center px-6 py-3 text-white font-medium rounded-lg transition-all duration-300 bg-white/20 hover:bg-white/30 flex items-center justify-center transform hover:scale-105 hover:shadow-lg">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-mail inline mr-2 transition-transform duration-300 hover:scale-110"><path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7"/><rect x="2" y="4" width="20" height="16" rx="2"/></svg>
+                        Contact
+                    </a>
+                </div>
+            </div>
+        </nav>
+
+        <header class="py-10 px-4 relative overflow-hidden">
+            <div class="absolute inset-0 backdrop-blur-2xl bg-white/10"></div>
+
+            <div class="max-w-6xl mx-auto">
+                <div class="bg-white/10 backdrop-blur-md rounded-3xl p-12 border border-white border-opacity-20 shadow-2xl text-center text-white">
+                    <div class="flex flex-row gap-2 absolute left-3 right-3 top-3 justify-between">
+                        <a href="https://rifflartdamien.me/projets" class="bg-white/10 hover:bg-white/20 transition duration-400 backdrop-blur-md w-12 h-12 rounded-2xl flex items-center justify-center border border-white border-opacity-20">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-left-icon lucide-arrow-left"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></svg>
+                        </a>
+                    </div>
+
+                    <h1 class="text-4xl md:text-6xl font-bold mb-6 text-white drop-shadow-lg">
+                        Projets d'Informatique
+                    </h1>
+                    <p class="text-base w-2xl md:text-2xl font-light max-w-4xl mx-auto text-white/80 leading-relaxed">
+                        Depuis que j'ai découvert l'informatique au début du collège, j'ai toujours aimé créer des applications qui peuvent me servir personnellement. Cela me permet de développer mes compétences tout en réalisant des projets qui me sont réellement utiles.<br>
+                        Tous ces projets sont disponibles sur mon <a href="https://github.com/damienrifflart" target="_blank" class="text-yellow-300 hover:text-yellow-400 transition-colors">Github</a>.
+                    </p>
+                    <div class="flex flex-nowrap justify-center gap-4 mt-8 w-full">
+                        <span class="hover:-translate-y-0.5 transition hover:bg-white/20 duration-400 glass-tag inline-flex items-center text-white rounded-full px-4 py-2 text-sm font-medium">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 mr-2" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H19a1 1 0 0 1 1 1v18a1 1 0 0 1-1 1H6.5a1 1 0 0 1 0-5H20"/></svg>
+                            6 Projets
+                        </span>
+                        <span class="hover:-translate-y-0.5 transition-transform hover:bg-white/20 duration-400 glass-tag inline-flex items-center text-white rounded-full px-4 py-2 text-sm font-medium">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-telescope-icon lucide-telescope w-6 h-6"><path d="m10.065 12.493-6.18 1.318a.934.934 0 0 1-1.108-.702l-.537-2.15a1.07 1.07 0 0 1 .691-1.265l13.504-4.44"/><path d="m13.56 11.747 4.332-.924"/><path d="m16 21-3.105-6.21"/><path d="M16.485 5.94a2 2 0 0 1 1.455-2.425l1.09-.272a1 1 0 0 1 1.212.727l1.515 6.06a1 1 0 0 1-.727 1.213l-1.09.272a2 2 0 0 1-2.425-1.455z"/><path d="m6.158 8.633 1.114 4.456"/><path d="m8 21 3.105-6.21"/><circle cx="12" cy="13" r="2"/></svg>
+                            &nbsp; Mécanique Classique
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </header>
+    </div>
+
+    <main class="mx-auto max-w-6xl px-4 py-16">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Projet 6 -->
+            <div class="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-shadow duration-300 border border-gray-100 overflow-hidden flex flex-col h-[400px]">
+                <div class="p-8 flex flex-col flex-grow">
+                    <div class="w-16 h-16 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-2xl flex items-center justify-center mb-6">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-brain-icon lucide-brain w-8 h-8"><path d="M12 5a3 3 0 1 0-5.997.125 4 4 0 0 0-2.526 5.77 4 4 0 0 0 .556 6.588A4 4 0 1 0 12 18Z"/><path d="M12 5a3 3 0 1 1 5.997.125 4 4 0 0 1 2.526 5.77 4 4 0 0 1-.556 6.588A4 4 0 1 1 12 18Z"/><path d="M15 13a4.5 4.5 0 0 1-3-4 4.5 4.5 0 0 1-3 4"/><path d="M17.599 6.5a3 3 0 0 0 .399-1.375"/><path d="M6.003 5.125A3 3 0 0 0 6.401 6.5"/><path d="M3.477 10.896a4 4 0 0 1 .585-.396"/><path d="M19.938 10.5a4 4 0 0 1 .585.396"/><path d="M6 18a4 4 0 0 1-1.967-.516"/><path d="M19.967 17.484A4 4 0 0 1 18 18"/></svg>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-800 mb-4">Quizzlify</h3>
+                    <p class="text-gray-600 text-justify flex-grow">
+                        Site web où l'on peut jouer à des quiz, créer des quiz et rentrer dans un classement des joueurs. 
+                    </p>
+                </div>
+
+                <div class="p-8 pt-0 mt-auto">
+                    <div class="flex flex-wrap gap-2 mb-5">
+                        <div class="inline-flex items-center bg-blue-500 text-white border border-blue-700 rounded-md w-[6rem] px-2.5 py-1 text-sm">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 mr-1.5 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m14.5 7-5 5"/><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H19a1 1 0 0 1 1 1v18a1 1 0 0 1-1 1H6.5a1 1 0 0 1 0-5H20"/><path d="m9.5 7 5 5"/></svg>
+                            A venir
+                        </div>
+
+                        <div class="inline-flex items-center bg-blue-500 text-white border border-blue-700 rounded-md px-2.5 py-1 text-sm">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-atom-icon lucide-atom w-4 h-4"><circle cx="12" cy="12" r="1"/><path d="M20.2 20.2c2.04-2.03.02-7.36-4.5-11.9-4.54-4.52-9.87-6.54-11.9-4.5-2.04 2.03-.02 7.36 4.5 11.9 4.54 4.52 9.87 6.54 11.9 4.5Z"/><path d="M15.7 15.7c4.52-4.54 6.54-9.87 4.5-11.9-2.03-2.04-7.36-.02-11.9 4.5-4.52 4.54-6.54 9.87-4.5 11.9 2.03 2.04 7.36.02 11.9-4.5Z"/></svg>
+                            &nbsp; React
+                        </div>
+                    </div>
+
+                    <a href="https://github.com/Quizzlify/Quizzlify" target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-blue-500 font-semibold hover:text-blue-800 transition-colors mr-2">
+                        Découvrir le projet
+                        <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                    </a>
+
+                    <a href="https://quizzlify.vercel.app/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-blue-500 font-semibold hover:text-blue-800 transition-colors">
+                        Voir le site
+                        <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Projet 5 -->
+            <div class="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-shadow duration-300 border border-gray-100 overflow-hidden flex flex-col h-[400px]">
+                <div class="p-8 flex flex-col flex-grow">
+                    <div class="w-16 h-16 bg-gradient-to-br from-yellow-500 to-orange-600 rounded-2xl flex items-center justify-center mb-6">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-speaker-icon lucide-speaker w-8 h-8"><rect width="16" height="20" x="4" y="2" rx="2"/><path d="M12 6h.01"/><circle cx="12" cy="14" r="4"/><path d="M12 14h.01"/></svg>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-800 mb-4">Analyse Audio</h3>
+                    <p class="text-gray-600 text-justify flex-grow">
+                        Application réalisée en Python, permettant d'analyser, en temps réel, les sons grâce à la FFT.
+                    </p>
+                </div>
+
+                <div class="p-8 pt-0 mt-auto">
+                    <div class="flex flex-wrap gap-2 mb-5">
+                        <div class="inline-flex items-center bg-orange-600 text-white border border-orange-800 rounded-md w-[5rem] px-2.5 py-1 text-sm">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 mr-1.5 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-book-check-icon lucide-book-check"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H19a1 1 0 0 1 1 1v18a1 1 0 0 1-1 1H6.5a1 1 0 0 1 0-5H20"/><path d="m9 9.5 2 2 4-4"/></svg>
+                            Fini
+                        </div>
+
+                        <div class="inline-flex items-center bg-orange-600 text-white border border-orange-800 rounded-md px-2.5 py-1 text-sm">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-worm-icon lucide-worm w-4 h-4"><path d="m19 12-1.5 3"/><path d="M19.63 18.81 22 20"/><path d="M6.47 8.23a1.68 1.68 0 0 1 2.44 1.93l-.64 2.08a6.76 6.76 0 0 0 10.16 7.67l.42-.27a1 1 0 1 0-2.73-4.21l-.42.27a1.76 1.76 0 0 1-2.63-1.99l.64-2.08A6.66 6.66 0 0 0 3.94 3.9l-.7.4a1 1 0 1 0 2.55 4.34z"/></svg>
+                            &nbsp; Python
+                        </div>
+                    </div>
+
+                    <a href="https://github.com/damienRifflart/analyse-audio" target="_blank" class="inline-flex items-center text-orange-600 font-semibold hover:text-orange-800 transition-colors">
+                        Découvrir le projet
+                        <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Projet 4 -->
+            <div class="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-shadow duration-300 border border-gray-100 overflow-hidden flex flex-col h-[400px]">
+                <div class="p-8 flex flex-col flex-grow">
+                    <div class="w-16 h-16 bg-gradient-to-br from-green-500 to-teal-600 rounded-2xl flex items-center justify-center mb-6">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-book-open-icon lucide-book-open w-8 h-8"><path d="M12 7v14"/><path d="M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"/></svg>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-800 mb-4">StudySmart</h3>
+                    <p class="text-gray-600 text-justify flex-grow">
+                        Permet aux étudiants de créer des tâches spécifiques à une matière avec des échéances, des priorités et des estimations de temps.
+                    </p>
+                </div>
+
+                <div class="p-8 pt-0 mt-auto">
+                    <div class="flex flex-wrap gap-2 mb-5">
+                        <div class="inline-flex items-center bg-teal-600 text-white border border-teal-800 rounded-md w-[5rem] px-2.5 py-1 text-sm">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 mr-1.5 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-book-check-icon lucide-book-check"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H19a1 1 0 0 1 1 1v18a1 1 0 0 1-1 1H6.5a1 1 0 0 1 0-5H20"/><path d="m9 9.5 2 2 4-4"/></svg>
+                            Fini
+                        </div>
+
+                        <div class="inline-flex items-center bg-teal-600 text-white border border-teal-800 rounded-md px-2.5 py-1 text-sm">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-atom-icon lucide-atom w-4 h-4"><circle cx="12" cy="12" r="1"/><path d="M20.2 20.2c2.04-2.03.02-7.36-4.5-11.9-4.54-4.52-9.87-6.54-11.9-4.5-2.04 2.03-.02 7.36 4.5 11.9 4.54 4.52 9.87 6.54 11.9 4.5Z"/><path d="M15.7 15.7c4.52-4.54 6.54-9.87 4.5-11.9-2.03-2.04-7.36-.02-11.9 4.5-4.52 4.54-6.54 9.87-4.5 11.9 2.03 2.04 7.36.02 11.9-4.5Z"/></svg>
+                            &nbsp; React
+                        </div>
+                    </div>
+
+                    <a href="https://github.com/damienRifflart/StudySmart/" target="_blank" class="inline-flex items-center text-teal-600 font-semibold hover:text-teal-900 transition-colors">
+                        Découvrir le projet
+                        <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Projet 3 -->
+            <div class="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-shadow duration-300 border border-gray-100 overflow-hidden flex flex-col h-[400px]">
+                <div class="p-8 flex flex-col flex-grow">
+                    <div class="w-16 h-16 bg-gradient-to-br from-indigo-600 to-blue-700 rounded-2xl flex items-center justify-center mb-6">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-dumbbell-icon lucide-dumbbell w-8 h-8"><path d="M17.596 12.768a2 2 0 1 0 2.829-2.829l-1.768-1.767a2 2 0 0 0 2.828-2.829l-2.828-2.828a2 2 0 0 0-2.829 2.828l-1.767-1.768a2 2 0 1 0-2.829 2.829z"/><path d="m2.5 21.5 1.4-1.4"/><path d="m20.1 3.9 1.4-1.4"/><path d="M5.343 21.485a2 2 0 1 0 2.829-2.828l1.767 1.768a2 2 0 1 0 2.829-2.829l-6.364-6.364a2 2 0 1 0-2.829 2.829l1.768 1.767a2 2 0 0 0-2.828 2.829z"/><path d="m9.6 14.4 4.8-4.8"/></svg>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-800 mb-4">Shapy</h3>
+                    <p class="text-gray-600 text-justify flex-grow">
+                        Application sportive pour iOs avec des temps de pause, des exercices personnalisés et plus encore.
+                    </p>
+                </div>
+   
+                <div class="p-8 pt-0 mt-auto">
+                    <div class="flex flex-wrap gap-2 mb-5">
+                        <div class="inline-flex items-center bg-indigo-600 text-white border border-indigo-800 rounded-md w-[5rem] px-2.5 py-1 text-sm">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 mr-1.5 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-book-check-icon lucide-book-check"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H19a1 1 0 0 1 1 1v18a1 1 0 0 1-1 1H6.5a1 1 0 0 1 0-5H20"/><path d="m9 9.5 2 2 4-4"/></svg>
+                            Fini
+                        </div>
+
+                        <div class="inline-flex items-center bg-indigo-600 text-white border border-indigo-800 rounded-md px-2.5 py-1 text-sm">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-bird-icon lucide-bird w-4 h-4"><path d="M16 7h.01"/><path d="M3.4 18H12a8 8 0 0 0 8-8V7a4 4 0 0 0-7.28-2.3L2 20"/><path d="m20 7 2 .5-2 .5"/><path d="M10 18v3"/><path d="M14 17.75V21"/><path d="M7 18a6 6 0 0 0 3.84-10.61"/></svg>
+                            &nbsp; Swift
+                        </div>
+                    </div>
+
+                    <a href="https://github.com/damienRifflart/Shapy" target="_blank" class="inline-flex items-center text-indigo-600 font-semibold hover:text-indigo-900 transition-colors">
+                        Découvrir le projet
+                        <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Projet 2 -->
+            <div class="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-shadow duration-300 border border-gray-100 overflow-hidden flex flex-col h-[400px]">
+                <div class="p-8 flex flex-col flex-grow">
+                    <div class="w-16 h-16 bg-gradient-to-br from-pink-500 to-yellow-500 rounded-2xl flex items-center justify-center mb-6">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chart-column-icon lucide-chart-column w-8 h-8"><path d="M3 3v16a2 2 0 0 0 2 2h16"/><path d="M18 17V9"/><path d="M13 17V5"/><path d="M8 17v-3"/></svg>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-800 mb-4">Marks</h3>
+                    <p class="text-gray-600 text-justify flex-grow">
+                        Application qui calcule automatiquement votre moyenne scolaire, en fonction de vos notes et de vos coefficients.
+                    </p>
+                </div>
+                   
+                <div class="p-8 pt-0 mt-auto">
+                    <div class="flex flex-wrap gap-2 mb-5">
+                        <div class="inline-flex items-center bg-pink-600 text-white border border-pink-800 rounded-md w-[5rem] px-2.5 py-1 text-sm">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 mr-1.5 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-book-check-icon lucide-book-check"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H19a1 1 0 0 1 1 1v18a1 1 0 0 1-1 1H6.5a1 1 0 0 1 0-5H20"/><path d="m9 9.5 2 2 4-4"/></svg>
+                            Fini
+                        </div>
+
+                        <div class="inline-flex items-center bg-pink-600 text-white border border-pink-800 rounded-md px-2.5 py-1 text-sm">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-heading-icon lucide-heading w-4 h-4"><path d="M6 12h12"/><path d="M6 20V4"/><path d="M18 20V4"/></svg>
+                            &nbsp; Html / Css
+                        </div>
+                    </div>
+
+                    <a href="https://github.com/damienRifflart/Marks" target="_blank" class="inline-flex items-center text-pink-500 font-semibold hover:text-pink-700 transition-colors">
+                        Découvrir le projet
+                        <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Projet 1 -->
+            <div class="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-shadow duration-300 border border-gray-100 overflow-hidden flex flex-col h-[400px]">
+                <div class="p-8 flex flex-col flex-grow">
+                    <div class="w-16 h-16 bg-gradient-to-br from-red-400 to-red-700 rounded-2xl flex items-center justify-center mb-6">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-sun-icon lucide-sun w-8 h-8"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-800 mb-4">MétéoMatin</h3>
+                    <p class="text-gray-600 text-justify flex-grow">
+                        Entraînement au design d'interface utilisateur avec une site de météo.
+                    </p>
+                </div>
+
+                <div class="p-8 pt-0 mt-auto">
+                    <div class="flex flex-wrap gap-2 mb-5">
+                        <div class="inline-flex items-center bg-red-600 text-white border border-red-800 rounded-md w-[5rem] px-2.5 py-1 text-sm">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 mr-1.5 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-book-check-icon lucide-book-check"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H19a1 1 0 0 1 1 1v18a1 1 0 0 1-1 1H6.5a1 1 0 0 1 0-5H20"/><path d="m9 9.5 2 2 4-4"/></svg>
+                            Fini
+                        </div>
+
+                        <div class="inline-flex items-center bg-red-600 text-white border border-red-800 rounded-md px-2.5 py-1 text-sm">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-frame-icon lucide-frame w-4 h-4"><line x1="22" x2="2" y1="6" y2="6"/><line x1="22" x2="2" y1="18" y2="18"/><line x1="6" x2="6" y1="2" y2="22"/><line x1="18" x2="18" y1="2" y2="22"/></svg>
+                            &nbsp; Design
+                        </div>
+                    </div>
+
+                    <a href="https://github.com/damienRifflart/MeteoMatin" target="_blank" class="inline-flex items-center text-red-600 font-semibold hover:text-red-800 transition-colors">
+                        Découvrir le projet
+                        <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                    </a>
+
+                    <a href="https://damienrifflart.github.io/MeteoMatin/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-red-600 font-semibold hover:text-red-800 transition-colors">
+                        Voir le site
+                        <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-[#061133] text-white py-8">
+        <div class="max-w-6xl mx-auto px-4 text-center">
+            <p class="text-md">© 2025 Damien RIFFLART. Tous droits réservés.</p>
+        </div>
+    </footer>
+
+    <script>
+        const cards = document.querySelectorAll('.card-hover');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry, index) => {
+                if (entry.isIntersecting) {
+                    setTimeout(() => {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }, index * 150);
+                }
+            });
+        });
+
+        cards.forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(30px)';
+            card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(card);
+        });
+        const btn = document.getElementById('menu-toggle');
+        const menu = document.getElementById('menu');
+        const svg = btn.querySelector('svg');
+                
+        btn.addEventListener('click', () => {
+        const isHidden = menu.classList.contains('menu-closed');
+                
+        if (isHidden) {
+            // Show menu
+            menu.classList.remove('menu-closed');
+            menu.classList.add('menu-open');
+        } else {
+            // Hide menu
+            menu.classList.remove('menu-open');
+            menu.classList.add('menu-closed');
+        }
+        });
+                
+        // Initialize menu as closed on mobile
+        if (window.innerWidth < 640) {
+            menu.classList.add('menu-closed');
+        }
+    </script>
+</body>
+</html>

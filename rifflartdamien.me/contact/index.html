@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>RIFFLART Damien</title>
+        <script src="https://cdn.tailwindcss.com"></script>
+        <style>
+        .glass-tag {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 
+                0 4px 16px rgba(0, 0, 0, 0.1),
+                inset 0 1px 0 rgba(255, 255, 255, 0.3);
+            transition: all 0.3s ease;
+        }
+        .active {
+            border: rgba(255, 255, 255, 0.5) solid 1px;
+        }
+        #menu.menu-open {
+            max-height: 400px;
+            opacity: 1;
+        }
+            
+        #menu.menu-closed {
+            max-height: 0;
+            opacity: 0;
+        }
+        </style>
+    </head>
+
+    <body class="bg-gradient-to-br from-blue-800 to-indigo-700 flex flex-col">
+        <nav class="relative z-10 bg-white/20 backdrop-blur-md border-b border-white/20">
+            <div class="max-w-6xl mx-auto px-4 my-auto">
+                <button id="menu-toggle" class="sm:hidden flex items-center px-3 mt-3 rounded text-white hover:bg-white/30 transition-all duration-300" aria-label="Ouvrir le menu">
+                    <svg class="h-7 w-7 transition-transform duration-300" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/>
+                    </svg>
+                </button>
+                <div id="menu" class="flex-col mt-2 mb-2 sm:flex-row justify-center items-center space-y-1 sm:space-y-0 sm:space-x-8 pb-4 sm:pb-0 sm:flex overflow-hidden transition-all duration-500 ease-in-out transform origin-top max-h-0 opacity-0 sm:max-h-none sm:opacity-100 sm:!flex">
+                    <a href="https://rifflartdamien.me" class="w-full sm:w-auto text-center px-6 py-3 text-white font-medium rounded-lg transition-all duration-300 hover:bg-white/30 bg-white/20 flex items-center justify-center transform hover:scale-105 hover:shadow-lg">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-home inline mr-2 transition-transform duration-300 hover:rotate-12"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9,22 9,12 15,12 15,22"/></svg>
+                        Accueil
+                    </a>
+                    <a href="https://rifflartdamien.me/projets" class="w-full sm:w-auto text-center px-6 py-3 text-white font-medium rounded-lg transition-all duration-300 bg-white/20 hover:bg-white/30 flex items-center justify-center transform hover:scale-105 hover:shadow-lg">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-atom inline mr-2 transition-transform duration-300 hover:rotate-180"><circle cx="12" cy="12" r="1"/><path d="M20.2 20.2c2.04-2.03.02-7.36-4.5-11.9-4.54-4.52-9.87-6.54-11.9-4.5-2.04 2.03-.02 7.36 4.5 11.9 4.54 4.52 9.87 6.54 11.9 4.5Z"/><path d="M15.7 15.7c4.52-4.54 6.54-9.87 4.5-11.9-2.03-2.04-7.36-.02-11.9 4.5-4.52 4.54-6.54 9.87-4.5 11.9 2.03 2.04 7.36.02 11.9-4.5Z"/></svg>
+                        Projets
+                    </a>
+                    <a href="https://rifflartdamien.me/contact" class="w-full sm:w-auto text-center px-6 py-3 text-white font-medium rounded-lg transition-all duration-300 bg-white/20 hover:bg-white/30 active flex items-center justify-center transform hover:scale-105 hover:shadow-lg">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-mail inline mr-2 transition-transform duration-300 hover:scale-110"><path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7"/><rect x="2" y="4" width="20" height="16" rx="2"/></svg>
+                        Contact
+                    </a>
+                </div>
+            </div>
+        </nav>
+
+        <div class="py-20 px-4 relative overflow-hidden min-h-screen">
+            <div class="absolute inset-0 backdrop-blur-2xl bg-white/10 flex-grow"></div>
+
+            <div class="relative max-w-6xl mx-auto">
+                <div class="bg-white/10 backdrop-blur-md rounded-3xl p-12 border border-white border-opacity-20 shadow-2xl text-center text-white">
+                    <div class="w-24 h-24 bg-white/20 backdrop-blur-sm rounded-3xl flex items-center justify-center mx-auto mb-8 shadow-lg">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="45" height="45" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-mail inline"><path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7"/><rect x="2" y="4" width="20" height="16" rx="2"/></svg>
+                    </div>
+                    <h1 class="text-5xl md:text-6xl font-bold mb-6 text-white drop-shadow-lg">
+                        Contact
+                    </h1>
+                    <p class="text-xl md:text-2xl font-light max-w-4xl mx-auto text-white/80 leading-relaxed">
+                        Vous pouvez me contacter par email ou par téléphone.
+                    </p>
+                    <div class="flex flex-col sm:flex-row justify-center gap-8 mt-8">
+                        <div class="flex flex-col items-center bg-white/20 glass-tag rounded-2xl p-6 w-full sm:w-[15rem] shadow-lg mb-6 sm:mb-0">
+                            <div class="mb-3">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-mail-icon lucide-mail text-white"><path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7"/><rect x="2" y="4" width="20" height="16" rx="2"/></svg>
+                            </div>
+                            <div class="text-lg font-semibold mb-2 text-white">Mail</div>
+                            <a href="mailto:rifflartdamien68@gmail.com" class="text-white/90 hover:underline break-all text-sm">
+                                rifflartdamien68@gmail.com
+                            </a>
+                        </div>
+                        <div class="flex flex-col items-center bg-white/20 glass-tag rounded-2xl p-6 w-full sm:w-[15rem] shadow-lg">
+                            <div class="mb-3">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-phone-icon lucide-phone text-white"><path d="M13.832 16.568a1 1 0 0 0 1.213-.303l.355-.465A2 2 0 0 1 17 15h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2A18 18 0 0 1 2 4a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v3a2 2 0 0 1-.8 1.6l-.468.351a1 1 0 0 0-.292 1.233 14 14 0 0 0 6.392 6.384"/></svg>
+                            </div>
+                            <div class="text-lg font-semibold mb-2 text-white">Téléphone</div>
+                            <a href="tel:0754396680" class="text-white/90 hover:underline text-sm">
+                                07.54.39.66.80
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer class="bg-[#061133] text-white py-8 w-full">
+            <div class="max-w-6xl mx-auto px-4 text-center">
+                <p class="text-md">© 2025 Damien RIFFLART. Tous droits réservés.</p>
+            </div>
+        </footer>
+    </body>
+    <script>
+        const btn = document.getElementById('menu-toggle');
+        const menu = document.getElementById('menu');
+        const svg = btn.querySelector('svg');
+                
+        btn.addEventListener('click', () => {
+        const isHidden = menu.classList.contains('menu-closed');
+                
+        if (isHidden) {
+            // Show menu
+            menu.classList.remove('menu-closed');
+            menu.classList.add('menu-open');
+        } else {
+            // Hide menu
+            menu.classList.remove('menu-open');
+            menu.classList.add('menu-closed');
+        }
+        });
+                
+        // Initialize menu as closed on mobile
+        if (window.innerWidth < 640) {
+            menu.classList.add('menu-closed');
+        }
+    </script>
+</html>

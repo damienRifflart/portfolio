@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Muon Trajectory - Classical Mechanics</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+        body {
+            font-family: 'Inter', sans-serif
+        }
+
+        .glass-tag {
+            background: rgba(255, 255, 255, .15);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, .2);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, .1), inset 0 1px 0 rgba(255, 255, 255, .3);
+            transition: all .3s ease
+        }
+
+        .input-glass {
+            background: rgba(255, 255, 255, .05);
+            backdrop-filter: blur(6px);
+            border: 1px solid rgba(255, 255, 255, .2);
+            transition: all .3s ease
+        }
+
+        .input-glass:focus {
+            background: rgba(255, 255, 255, .1);
+            border-color: rgba(255, 255, 255, .4);
+            box-shadow: 0 0 0 3px rgba(99, 102, 241, .2)
+        }
+
+        #plot {
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, .25)
+        }
+
+        #menu.menu-open {
+            max-height: 400px;
+            opacity: 1
+        }
+
+        #menu.menu-closed {
+            max-height: 0;
+            opacity: 0
+        }
+
+        ::-webkit-scrollbar {
+            width: 8px
+        }
+
+        ::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, .06);
+            border-radius: 4px
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, .16);
+            border-radius: 4px
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: rgba(255, 255, 255, .26)
+        }
+    </style>
+</head>
+
+<body class="bg-gradient-to-br from-blue-800 to-indigo-700 flex flex-col">
+
+    <nav class="relative z-10 bg-white/20 backdrop-blur-md border-b border-white/20">
+        <div class="max-w-6xl mx-auto px-4 my-auto">
+            <button id="menu-toggle"
+                class="sm:hidden flex items-center px-3 mt-3 rounded text-white hover:bg-white/30 transition-all duration-300"
+                aria-label="Ouvrir le menu">
+                <svg class="h-7 w-7 transition-transform duration-300" fill="none" stroke="currentColor"
+                    stroke-width="2" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+            </button>
+            <div id="menu"
+                class="flex-col mt-2 mb-2 sm:flex-row justify-center items-center space-y-1 sm:space-y-0 sm:space-x-8 pb-4 sm:pb-0 sm:flex overflow-hidden transition-all duration-500 ease-in-out transform origin-top max-h-0 opacity-0 sm:max-h-none sm:opacity-100 sm:!flex">
+                <a href="https://rifflartdamien.me"
+                    class="w-full sm:w-auto text-center px-6 py-3 text-white font-medium rounded-lg transition-all duration-300 hover:bg-white/30 bg-white/20 flex items-center justify-center transform hover:scale-105 hover:shadow-lg">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="lucide lucide-home inline mr-2 transition-transform duration-300 hover:rotate-12">
+                        <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+                        <polyline points="9,22 9,12 15,12 15,22" />
+                    </svg>
+                    Accueil
+                </a>
+                <a href="https://rifflartdamien.me/projets"
+                    class="w-full sm:w-auto text-center px-6 py-3 text-white font-medium rounded-lg transition-all duration-300 bg-white/20 hover:bg-white/30 active flex items-center justify-center transform hover:scale-105 hover:shadow-lg">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="lucide lucide-atom inline mr-2 transition-transform duration-300 hover:rotate-180">
+                        <circle cx="12" cy="12" r="1" />
+                        <path
+                            d="M20.2 20.2c2.04-2.03.02-7.36-4.5-11.9-4.54-4.52-9.87-6.54-11.9-4.5-2.04 2.03-.02 7.36 4.5 11.9 4.54 4.52 9.87 6.54 11.9 4.5Z" />
+                        <path
+                            d="M15.7 15.7c4.52-4.54 6.54-9.87 4.5-11.9-2.03-2.04-7.36-.02-11.9 4.5-4.52 4.54-6.54 9.87-4.5 11.9 2.03 2.04 7.36.02 11.9-4.5Z" />
+                    </svg>
+                    Projets
+                </a>
+                <a href="https://rifflartdamien.me/contact"
+                    class="w-full sm:w-auto text-center px-6 py-3 text-white font-medium rounded-lg transition-all duration-300 bg-white/20 hover:bg-white/30 flex items-center justify-center transform hover:scale-105 hover:shadow-lg">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="lucide lucide-mail inline mr-2 transition-transform duration-300 hover:scale-110">
+                        <path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7" />
+                        <rect x="2" y="4" width="20" height="16" rx="2" />
+                    </svg>
+                    Contact
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <main
+        class="py-20 px-4 overflow-hidden bg-gradient-to-br from-blue-800 to-indigo-700 min-h-screen flex-1 relative overflow-hidden">
+        <div class="absolute inset-0 backdrop-blur-2xl bg-white/10 z-0"></div>
+        <div class="max-w-6xl mx-auto relative z-10">
+            <div
+                class="bg-white/10 backdrop-blur-md rounded-3xl p-12 border border-white border-opacity-20 shadow-2xl text-center text-white">
+
+                <div class="flex flex-row gap-2 absolute left-3 right-3 top-3 justify-between">
+                    <a href="https://rifflartdamien.me/projets/physique"
+                        class="bg-white/10 hover:bg-white/20 transition duration-400 backdrop-blur-md w-12 h-12 rounded-2xl flex items-center justify-center border border-white border-opacity-20">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                            stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="lucide lucide-arrow-left-icon lucide-arrow-left">
+                            <path d="m12 19-7-7 7-7" />
+                            <path d="M19 12H5" />
+                        </svg>
+                    </a>
+                </div>
+
+                <h1 class="text-4xl md:text-5xl font-bold mb-6 text-white drop-shadow-lg">Trajectoire d'un muon cosmique
+                </h1>
+                <p class="text-lg md:text-xl text-white/80 max-w-3xl mx-auto leading-relaxed">Etude de la position d'un
+                    muon cosmique entrant dans un champ magnétique uniforme, en utilisant la mécanique classique et
+                    quantique.</p>
+            </div>
+
+            <div class="glass-tag rounded-2xl p-6 mt-8">
+                <h3 class="text-xl text-white font-semibold mb-3 flex items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 mr-2" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    Information
+                </h3>
+                <p class="text-white/90 leading-relaxed">
+                    Nous travaillons actuellement à la rédaction d'un article complet traitant de la mécanique classique
+                    & quantique. La version finale sera prochaînement publiée sur le site.
+                </p>
+            </div>
+
+            <section class=" mt-12">
+                <div class="glass-tag rounded-2xl p-6 mb-12">
+                    <h2 class="text-2xl text-white font-semibold mb-6 flex items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 mr-3" fill="none" viewBox="0 0 24 24"
+                            stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 100 4m0-4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 100 4m0-4v2m0-6V4" />
+                        </svg>
+                        Paramètres de simulation
+                    </h2>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 text-white">
+                        <div class="glass-tag rounded-xl p-4">
+                            <h3 class="font-semibold mb-3 text-center">Vitesses initiales</h3>
+                            <div class="space-y-3">
+                                <div>
+                                    <label class="block text-sm mb-2">\( v_{x0} \)</label>
+                                    <input type="number" id="vx0" value="1" step="0.1"
+                                        class="input-glass w-full px-3 py-2 rounded-lg text-white placeholder-white/50 outline-none">
+                                </div>
+                                <div>
+                                    <label class="block text-sm mb-2">\( v_{y0} \)</label>
+                                    <input type="number" id="vy0" value="1" step="0.1"
+                                        class="input-glass w-full px-3 py-2 rounded-lg text-white placeholder-white/50 outline-none">
+                                </div>
+                                <div>
+                                    <label class="block text-sm mb-2">\( v_{z0} \)</label>
+                                    <input type="number" id="vz0" value="1" step="0.1"
+                                        class="input-glass w-full px-3 py-2 rounded-lg text-white placeholder-white/50 outline-none">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="glass-tag rounded-xl p-4">
+                            <h3 class="font-semibold mb-3 text-center">Fréquence cyclotron</h3>
+                            <div>
+                                <label class="block text-sm mb-2">\( \omega \)</label>
+                                <input type="number" id="omega" value="2" step="0.1"
+                                    class="input-glass w-full px-3 py-2 rounded-lg text-white placeholder-white/50 outline-none">
+                            </div>
+                        </div>
+
+                        <div class="glass-tag rounded-xl p-4 sm:col-span-2">
+                            <h3 class="font-semibold mb-3 text-center">Positions initiales</h3>
+                            <div class="grid grid-cols-3 gap-3">
+                                <div>
+                                    <label class="block text-sm mb-2">\( x_0 \)</label>
+                                    <input type="number" id="x0" value="0.5" step="0.1"
+                                        class="input-glass w-full px-3 py-2 rounded-lg text-white placeholder-white/50 outline-none">
+                                </div>
+                                <div>
+                                    <label class="block text-sm mb-2">\( y_0 \)</label>
+                                    <input type="number" id="y0" value="0.5" step="0.1"
+                                        class="input-glass w-full px-3 py-2 rounded-lg text-white placeholder-white/50 outline-none">
+                                </div>
+                                <div>
+                                    <label class="block text-sm mb-2">\( z_0 \)</label>
+                                    <input type="number" id="z0" value="0.5" step="0.1"
+                                        class="input-glass w-full px-3 py-2 rounded-lg text-white placeholder-white/50 outline-none">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 xl:grid-cols-3 gap-8">
+                    <div class="xl:col-span-2">
+                        <div class="glass-tag rounded-2xl p-6">
+                            <h2 class="text-2xl font-semibold mb-4 flex items-center text-white">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 mr-3" fill="none"
+                                    viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                                </svg>
+                                Visualisation 3D
+                            </h2>
+                            <div id="plot" class="w-full" style="height: 500px;"></div>
+                        </div>
+                    </div>
+
+                    <div class="space-y-6">
+                        <div class="rounded-2xl p-6">
+                            <h3 class="text-xl font-semibold mb-4 text-white flex items-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 mr-2" fill="none"
+                                    viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
+                                </svg>
+                                Formule générale
+                            </h3>
+                            <div class="text-white" style="font-size: 1.2rem;">
+                                \[ \vec{q}(t) = \begin{pmatrix} \frac{v_{x,0}}{\omega} \sin \omega t - \frac{v_{z,0}}{\omega} ( 1 - \cos \omega t ) \\
+        v_{y,0} t +y_0 \\
+        \frac{v_{z,0}}{\omega} \sin \omega t + \frac{v_{x,0}}{\omega} ( 1 - \cos \omega t ) \end{pmatrix} \]
+                            </div>
+                        </div>
+
+                        <div class="rounded-2xl p-6 text-white">
+                            <h3 class="text-xl font-semibold mb-4 flex items-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 mr-2" fill="none"
+                                    viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+                                </svg>
+                                Avec conditions initiales
+                            </h3>
+                            <div id="formulaWithV0" class="text-sm" style="font-size: 1.2rem;"></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer class="bg-[#061133] text-white py-8 relative z-10">
+        <div class="px-4 text-center">
+            <p class="text-md">© 2025 Damien RIFFLART. Tous droits réservés.</p>
+        </div>
+    </footer>
+
+    <script>
+        const vx0Input = document.getElementById("vx0");
+        const vy0Input = document.getElementById("vy0");
+        const vz0Input = document.getElementById("vz0");
+        const omegaInput = document.getElementById("omega");
+        const x0Input = document.getElementById("x0");
+        const y0Input = document.getElementById("y0");
+        const z0Input = document.getElementById("z0");
+        const formulaContainer = document.getElementById("formulaWithV0");
+
+        function updateFormula() {
+    		if (!vx0Input || !vy0Input || !vz0Input || !omegaInput || !x0Input || !y0Input || !z0Input || !formulaContainer) return;
+
+    		const vx0 = vx0Input.value;
+    		const vy0 = vy0Input.value;
+    		const vz0 = vz0Input.value;
+    		const omega = omegaInput.value;
+    		const x0 = x0Input.value;
+    		const y0 = y0Input.value;
+    		const z0 = z0Input.value;
+
+    		const latex = `\\[ \\vec{q}(t) = \\begin{pmatrix} \\frac{${vx0}}{${omega}} \\sin(${omega} t) - \\frac{${vz0}}{${omega}} (1 - \\cos(${omega} t)) \\\\ ${vy0} t + ${y0} \\\\ \\frac{${vz0}}{${omega}} \\sin(${omega} t) + \\frac{${vx0}}{${omega}} (1 - \\cos(${omega} t)) \\end{pmatrix} \\]`;
+
+    		formulaContainer.innerHTML = latex;
+    		if (window.MathJax && MathJax.typesetPromise) {
+        		MathJax.typesetPromise().catch(() => {});
+    		}
+	}
+
+
+        function updateTrajectory() {
+            if (!vx0Input || !vy0Input || !vz0Input || !omegaInput || !x0Input || !y0Input || !z0Input) return;
+            const vx0 = parseFloat(vx0Input.value) || 0;
+            const vy0 = parseFloat(vy0Input.value) || 0;
+            const vz0 = parseFloat(vz0Input.value) || 0;
+            const omega = parseFloat(omegaInput.value) || 0;
+            const x0 = parseFloat(x0Input.value) || 0;
+            const y0 = parseFloat(y0Input.value) || 0;
+            const z0 = parseFloat(z0Input.value) || 0;
+            const safeOmega = Math.abs(omega) < 1e-8 ? 1e-8 : omega;
+            const t = Array.from({ length: 500 }, (_, i) => i * 0.02);
+            const x = t.map(tt => (vx0 / safeOmega) * Math.sin(safeOmega * tt) - (vz0 / safeOmega) * (1 - Math.cos(safeOmega * tt)) + x0);
+            const y = t.map(tt => vy0 * tt + y0);
+            const z = t.map(tt => (vz0 / safeOmega) * Math.sin(safeOmega * tt) + (vx0 / safeOmega) * (1 - Math.cos(safeOmega * tt)) + z0 )
+            const trace = { x: x, y: y, z: z, mode: 'lines', line: { width: 6, color: '#cbcfff' }, type: 'scatter3d' };
+            const layout = {
+                scene: {
+                    xaxis: { title: 'X', gridcolor: '#949eff', color: '#949eff' },
+                    yaxis: { title: 'Y', gridcolor: '#949eff', color: '#949eff' },
+                    zaxis: { title: 'Z', gridcolor: '#949eff', color: '#949eff' },
+                    bgcolor: 'rgba(0,0,0,0.4)',
+                    camera: { eye: { x: 1.5, y: 1.5, z: 1.5 } }
+                },
+                paper_bgcolor: 'rgba(0,0,0,0)',
+                plot_bgcolor: 'rgba(0,0,0,0)',
+                font: { color: 'white' },
+                margin: { t: 0, b: 0, l: 0, r: 0 }
+            };
+            try { Plotly.react('plot', [trace], layout, { responsive: true }); } catch (err) { console.error(err); }
+        }
+
+        updateFormula();
+        updateTrajectory();
+
+        [vx0Input, vy0Input, vz0Input, omegaInput, x0Input, y0Input, z0Input].forEach(input => {
+            if (!input) return;
+            input.addEventListener('input', () => { updateTrajectory(); updateFormula(); });
+        });
+
+        window.addEventListener('resize', () => { try { Plotly.Plots.resize('plot'); } catch (e) { } });
+
+        const btn = document.getElementById('menu-toggle');
+        const menu = document.getElementById('menu');
+        if (btn && menu) {
+            btn.addEventListener('click', () => {
+                const isHidden = menu.classList.contains('menu-closed');
+                if (isHidden) {
+                    menu.classList.remove('menu-closed');
+                    menu.classList.add('menu-open');
+                } else {
+                    menu.classList.remove('menu-open');
+                    menu.classList.add('menu-closed');
+                }
+            });
+            if (window.innerWidth < 640) menu.classList.add('menu-closed');
+        }
+    </script>
+</body>
+
+</html>
