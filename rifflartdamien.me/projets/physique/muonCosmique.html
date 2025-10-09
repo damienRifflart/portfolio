@@ -143,11 +143,10 @@
                     </a>
                 </div>
 
-                <h1 class="text-4xl md:text-5xl font-bold mb-6 text-white drop-shadow-lg">Trajectoire d'un muon cosmique
+                <h1 class="text-4xl md:text-5xl font-bold mb-6 text-white drop-shadow-lg">Dynamique de particules
                 </h1>
-                <p class="text-lg md:text-xl text-white/80 max-w-3xl mx-auto leading-relaxed">Etude de la position d'un
-                    muon cosmique entrant dans un champ magnétique uniforme, en utilisant la mécanique classique et
-                    quantique.</p>
+                <p class="text-lg md:text-xl text-white/80 max-w-3xl mx-auto leading-relaxed">Etude du mouvement de
+                    particules chargées dans un champ magnétique uniforme, en mécanique classique & quantique.</p>
             </div>
 
             <div class="glass-tag rounded-2xl p-6 mt-8">
@@ -159,10 +158,25 @@
                     </svg>
                     Information
                 </h3>
-                <p class="text-white/90 leading-relaxed">
-                    Nous travaillons actuellement à la rédaction d'un article complet traitant de la mécanique classique
-                    & quantique. La version finale sera prochaînement publiée sur le site.
+                <p class="text-white">
+                    Dans le cadre des olympiades de physique, nous avons comme projet d'étudier le mouvement des
+                    particules placées dans un champ magnétique uniforme.
+                    Les particules étudiées résultent de l'ionisation du plomb par des muons cosmiques, et sont
+                    détectées par une chambre à brouillard.
+                    <br />
+                    Nous travaillons actuellement à la rédaction d'une série de trois articles traitant de:
                 </p>
+
+                <ul class="list-disc list-inside text-white">
+                    <li>Dynamique des particules chargées dans un champ magnétique uniforme en mécanique classique</li>
+                    <li>Dynamique des particules chargées dans un champ magnétique uniforme en mécanique quantique</li>
+                    <li>Analyse des résultats expérimentaux</li>
+                </ul>
+
+                <p class="text-white leading-relaxed text-justify mt-5">
+                    Vous pourrez retrouver les articles une fois publiés sur cette page. En attendant, vous pouvez
+                    utiliser le simulateur ci-dessous pour visualiser la trajectoire d'une particule chargée dans un
+                    champ magnétique uniforme en mécanique classique, en ajustant les conditions initiales.
             </div>
 
             <section class=" mt-12">
@@ -256,9 +270,11 @@
                                 Formule générale
                             </h3>
                             <div class="text-white" style="font-size: 1.2rem;">
-                                \[ \vec{q}(t) = \begin{pmatrix} \frac{v_{x,0}}{\omega} \sin \omega t - \frac{v_{z,0}}{\omega} ( 1 - \cos \omega t ) \\
-        v_{y,0} t +y_0 \\
-        \frac{v_{z,0}}{\omega} \sin \omega t + \frac{v_{x,0}}{\omega} ( 1 - \cos \omega t ) \end{pmatrix} \]
+                                \[ \vec{q}(t) = \begin{pmatrix} \frac{v_{x,0}}{\omega} \sin \omega t -
+                                \frac{v_{z,0}}{\omega} ( 1 - \cos \omega t ) \\
+                                v_{y,0} t +y_0 \\
+                                \frac{v_{z,0}}{\omega} \sin \omega t + \frac{v_{x,0}}{\omega} ( 1 - \cos \omega t )
+                                \end{pmatrix} \]
                             </div>
                         </div>
 
@@ -296,23 +312,23 @@
         const formulaContainer = document.getElementById("formulaWithV0");
 
         function updateFormula() {
-    		if (!vx0Input || !vy0Input || !vz0Input || !omegaInput || !x0Input || !y0Input || !z0Input || !formulaContainer) return;
+            if (!vx0Input || !vy0Input || !vz0Input || !omegaInput || !x0Input || !y0Input || !z0Input || !formulaContainer) return;
 
-    		const vx0 = vx0Input.value;
-    		const vy0 = vy0Input.value;
-    		const vz0 = vz0Input.value;
-    		const omega = omegaInput.value;
-    		const x0 = x0Input.value;
-    		const y0 = y0Input.value;
-    		const z0 = z0Input.value;
+            const vx0 = vx0Input.value;
+            const vy0 = vy0Input.value;
+            const vz0 = vz0Input.value;
+            const omega = omegaInput.value;
+            const x0 = x0Input.value;
+            const y0 = y0Input.value;
+            const z0 = z0Input.value;
 
-    		const latex = `\\[ \\vec{q}(t) = \\begin{pmatrix} \\frac{${vx0}}{${omega}} \\sin(${omega} t) - \\frac{${vz0}}{${omega}} (1 - \\cos(${omega} t)) \\\\ ${vy0} t + ${y0} \\\\ \\frac{${vz0}}{${omega}} \\sin(${omega} t) + \\frac{${vx0}}{${omega}} (1 - \\cos(${omega} t)) \\end{pmatrix} \\]`;
+            const latex = `\\[ \\vec{q}(t) = \\begin{pmatrix} \\frac{${vx0}}{${omega}} \\sin(${omega} t) - \\frac{${vz0}}{${omega}} (1 - \\cos(${omega} t)) \\\\ ${vy0} t + ${y0} \\\\ \\frac{${vz0}}{${omega}} \\sin(${omega} t) + \\frac{${vx0}}{${omega}} (1 - \\cos(${omega} t)) \\end{pmatrix} \\]`;
 
-    		formulaContainer.innerHTML = latex;
-    		if (window.MathJax && MathJax.typesetPromise) {
-        		MathJax.typesetPromise().catch(() => {});
-    		}
-	}
+            formulaContainer.innerHTML = latex;
+            if (window.MathJax && MathJax.typesetPromise) {
+                MathJax.typesetPromise().catch(() => { });
+            }
+        }
 
 
         function updateTrajectory() {
@@ -328,7 +344,7 @@
             const t = Array.from({ length: 500 }, (_, i) => i * 0.02);
             const x = t.map(tt => (vx0 / safeOmega) * Math.sin(safeOmega * tt) - (vz0 / safeOmega) * (1 - Math.cos(safeOmega * tt)) + x0);
             const y = t.map(tt => vy0 * tt + y0);
-            const z = t.map(tt => (vz0 / safeOmega) * Math.sin(safeOmega * tt) + (vx0 / safeOmega) * (1 - Math.cos(safeOmega * tt)) + z0 )
+            const z = t.map(tt => (vz0 / safeOmega) * Math.sin(safeOmega * tt) + (vx0 / safeOmega) * (1 - Math.cos(safeOmega * tt)) + z0)
             const trace = { x: x, y: y, z: z, mode: 'lines', line: { width: 6, color: '#cbcfff' }, type: 'scatter3d' };
             const layout = {
                 scene: {
