@@ -12,7 +12,7 @@ omega = 0.5
 hbar = 1
 p_z = 3
 p_x = 3
-t0 = 0
+t0 = 100
 
 x = np.linspace(-100, 100, 200)
 y = np.linspace(-100, 100, 200)
@@ -38,7 +38,7 @@ def E_free():
 def phi_x(X, t):
     gamma_x = gamma_x_func(X)
     H = hermite(n_x)(gamma_x)
-    return N(n_x) * H * np.exp(-gamma_x**2 / 2) * np.exp(-E_osc(n_x) * t / hbar)
+    return N(n_x) * H * np.exp(-gamma_x**2 / 2) * np.exp(-1j * E_osc(n_x) * t / hbar)
 
 def phi_y(Y, t):
     return np.exp(1j * k_y * Y) * np.exp(-1j * E_free() * t / hbar)
@@ -55,19 +55,14 @@ def phi(X, Y, Z, t):
 value = phi(X, Y, Z, t0)
 probability = np.abs(value)**2
 
-X_red = X[::10, ::10, ::10]
-Y_red = Y[::10, ::10, ::10]
-Z_red = Z[::10, ::10, ::10]
-prob_red = probability[::10, ::10, ::10]
-
 fig = go.Figure(
     data=go.Isosurface(
-        x=X_red.flatten(),
-        y=Y_red.flatten(),
-        z=Z_red.flatten(),
-        value=prob_red.flatten(),
-        isomin=prob_red.max()*0.01,
-        isomax=prob_red.max(),
+        x=X.flatten(),
+        y=Y.flatten(),
+        z=Z.flatten(),
+        value=probability.flatten(),
+        isomin=probability.max()*0.01,
+        isomax=probability.max(),
         surface_count=3,
         colorscale='Viridis',
     )
